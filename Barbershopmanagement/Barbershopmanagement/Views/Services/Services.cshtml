@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Barbershopmanagement.Models.DICHVU>
+
+
+@{
+    ViewBag.Title = "Dịch vụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.SerVicesActive = 1;
+}
+
+
+
+<style>
+    .item-services {
+        display: inline-flex;
+        margin-left: 85px;
+        margin-top: 30px;
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+        width: 300px;
+    }
+</style>
+
+<main>
+    <section class="products section-padding">
+        <div class="container">
+            @if (Model.Count() == 0)
+            {
+                <div style="height:210px">
+                    <div style="color:red;font-weight:bold;margin-left:450px">
+                        Không tìm thấy nội dung bạn yêu cầu.
+                    </div>
+                    <div style="color:red;font-weight:bold;margin-left:530px">
+                        Vui lòng nhập lại.
+                    </div>
+                </div>
+
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-12 mb-3 item-services">
+                        <form action="~/Services/Details" method="get">
+                            <div class="product-thumb">
+                                <button type="submit" name="id" value="@item.DICHVUID" style="border: none;">
+                                    <img src="~/Content/images/@item.URLHINHANH" class="img-fluid product-image" style="width: 300px;">
+                                </button>
+
+                                <button class="product-info" style="width: 300px; text-align:center; border:none; width:300px" name="id" value="@item.DICHVUID">
+                                    <div>
+                                        <h5 class="product-title">
+                                            @item.TENDICHVU
+                                        </h5>
+                                    </div>
+                                    <div>
+                                        @string.Format("{0:N0}", item.GIADICHVU)
+                                        <span class="currencySymbol">₫</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                }
+
+            }
+
+        </div>
+    </section>
+
+</main>
+
+@if (TempData["AddServiceToCart"] != null)
+{
+    <script>
+        alert("Thêm vào giỏ hàng thành công!");
+    </script>
+}

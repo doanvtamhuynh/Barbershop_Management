@@ -1,0 +1,144 @@
+﻿@model Barbershopmanagement.Models.DICHVU
+
+@{
+    ViewBag.Title = Model.TENDICHVU;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+    List<Barbershopmanagement.Models.COMMENT_SERVICES> dsComment = db.COMMENT_SERVICES.Where(m => m.DICHVUID == Model.DICHVUID).ToList();
+}
+
+
+<style>
+    .services-details {
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+    }
+
+    .services-comment {
+        width: 80%;
+        height: 100px;
+        padding: 10px;
+        margin-left: 30px
+    }
+
+    .button-comment {
+        width: 10%;
+        height: 50px;
+        margin-left: 5px;
+        margin-top: 25px;
+    }
+
+    .services-comment-input {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .button-comment-input {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        border-color: gray;
+        padding: 5px;
+    }
+</style>
+
+<a href="~/Services/Services" class="buy_continute mt-4"><i class="fa fa-arrow-circle-left"></i> Trở lại</a>
+
+<div class="product__details row services-details">
+
+
+    <div class="product__details-img col-lg-4 col-md-4">
+        <div class="big-img">
+            <img src="~/Content/images/@Model.URLHINHANH" alt="" id="zoom" style="visibility: visible;">
+        </div>
+    </div>
+
+    <div class="product__details-info col-lg-8 col-md-8">
+        <h3 style="margin-top: unset; line-height: unset;">@Model.TENDICHVU</h3>
+        <div class="short-des">
+            @Model.MOTA
+        </div><hr />
+
+        <div class="product__pride">
+            <div class="product__pride-newPride" style="font-size: 40px; text-align: start;">
+                <span class="Price">
+                    <bdi>
+                        @string.Format("{0:N0}", Model.GIADICHVU)
+                        <span class="currencySymbol">₫</span>
+                    </bdi>
+                </span>
+            </div>
+
+        </div>
+
+        <form action="~/Services/AddServiceToCart" method="post">
+
+            <div class="number">
+                <span>
+                    Thời gian thực hiện:
+                    <span class="number__count">
+                        @Model.THOIGIANTHUCHIEN phút
+                    </span>
+                </span>
+
+            </div>
+            <button class="product__cart-add" type="submit" name="id" value="@Model.DICHVUID">Thêm vào giỏ hàng</button>
+        </form>
+    </div>
+</div>
+
+<div class=" product__details row services-details" style="margin-top: 50px;">
+    <form style="display:inline-flex" action="~/Services/Comment" method="post">
+        <div class="services-comment">
+            <textarea placeholder="Bình luận..." name="comment" class="services-comment-input"></textarea>
+        </div>
+        <div class="button-comment">
+            <button type="submit" class="button-comment-input" name="id" value="@Model.DICHVUID">Bình luận</button>
+        </div>
+    </form>
+    <hr />
+    <div style="margin-left:40px;font-weight:bold;font-size:20px">
+        Bình luận:
+    </div>
+    @if (dsComment.Count() == 0)
+    {
+        if (TempData["comment_service"] != null)
+        {
+            <div style="margin-left:40%;color:red">
+                @TempData["comment_service"]
+            </div>
+        }
+        else
+        {
+            <div style="margin-left:40%;color:gray">
+                Chưa có bình luận...
+            </div>
+        }
+    }
+    else
+    {
+        <div>
+            @foreach (var item in dsComment)
+            {
+                <div style="margin-top:15px">
+                    <div style="margin-left: 40px; color: blue; font-weight: bold; font-size: 15px">
+                        @item.USER.HOTEN
+                    </div>
+                    <div style="margin-left: 40px; font-size: 15px">
+                        @item.NOIDUNG
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+
+@if (TempData["AddServiceToCart"] != null)
+{
+    <script>
+        alert("Sản phẩm đã tồn tại trong giỏ hàng!");
+    </script>
+}
