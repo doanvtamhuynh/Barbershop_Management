@@ -1,0 +1,118 @@
+﻿@model Barbershopmanagement.Models.NHANVIEN
+
+@{
+    ViewBag.Title = Model.USER.HOTEN;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+    List<Barbershopmanagement.Models.COMMENT_NHANVIEN> dsComment = db.COMMENT_NHANVIEN.Where(m => m.NHANVIENID == Model.NHANVIENID).ToList();
+}
+
+
+<style>
+    .services-details {
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+    }
+
+    .services-comment {
+        width: 80%;
+        height: 100px;
+        padding: 10px;
+        margin-left: 30px
+    }
+
+    .button-comment {
+        width: 10%;
+        height: 50px;
+        margin-left: 5px;
+        margin-top: 25px;
+    }
+
+    .services-comment-input {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .button-comment-input {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        border-color: gray;
+        padding: 5px;
+    }
+</style>
+
+<a href="~/Employees/Employees" class="buy_continute mt-4"><i class="fa fa-arrow-circle-left"></i> Trở lại</a>
+
+<div class="product__details row services-details">
+
+
+    <div class="product__details-img col-lg-4 col-md-4">
+        <div class="big-img">
+            <img src="~/Content/images/avatar/@Model.USER.URLHINHANH" alt="" id="zoom" style="visibility: visible;">
+        </div>
+    </div>
+
+    <div class="product__details-info col-lg-8 col-md-8">
+        <h3 style="margin-top: unset; line-height: unset;">@Model.USER.HOTEN</h3>
+        <div class="short-des">
+
+            Số điện thoại: @Model.USER.SODIENTHOAI
+        </div><hr />
+        <div class="short-des">
+            Email:         @Model.USER.EMAIL
+        </div><hr />
+        <div class="short-des">
+            Địa chỉ:       @Model.USER.DIACHI
+        </div><hr />
+    </div>
+</div>
+
+<div class=" product__details row services-details" style="margin-top: 50px;">
+    <form style="display:inline-flex" action="~/Employees/Comment" method="post">
+        <div class="services-comment">
+            <textarea placeholder="Bình luận..." name="comment" class="services-comment-input"></textarea>
+        </div>
+        <div class="button-comment">
+            <button type="submit" class="button-comment-input" name="id" value="@Model.NHANVIENID">Bình luận</button>
+        </div>
+    </form>
+    <hr />
+    <div style="margin-left:40px;font-weight:bold;font-size:20px">
+        Bình luận:
+    </div>
+    @if (dsComment.Count() == 0)
+    {
+        if (TempData["comment_employee"] != null)
+        {
+            <div style="margin-left:40%;color:red">
+                @TempData["comment_employee"]
+            </div>
+        }
+        else
+        {
+            <div style="margin-left:40%;color:gray">
+                Chưa có bình luận...
+            </div>
+        }
+    }
+    else
+    {
+        <div>
+            @foreach (var item in dsComment)
+            {
+                <div style="margin-top:15px">
+                    <div style="margin-left: 40px; color: blue; font-weight: bold; font-size: 15px">
+                        @item.USER.HOTEN
+                    </div>
+                    <div style="margin-left: 40px; font-size: 15px">
+                        @item.NOIDUNG
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+

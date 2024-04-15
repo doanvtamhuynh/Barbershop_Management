@@ -1,0 +1,52 @@
+﻿﻿@model IEnumerable<Barbershopmanagement.Models.NHANVIEN>
+
+@{
+    ViewBag.Title = "Nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ListEmployees = 1;
+}
+
+<style>
+    .item-services {
+        display: inline-flex;
+        margin-left: 85px;
+        margin-top: 30px;
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+        width: 300px;
+    }
+</style>
+
+<main>
+    <section class="products section-padding">
+        <div class="container">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-12 mb-3 item-services">
+                    <form action="~/Employees/Details" method="get">
+                        <div class="product-thumb">
+                            <button type="submit" name="id" value="@item.NHANVIENID" style="border: none;">
+                                <img src="~/Content/images/avatar/@item.USER.URLHINHANH" class="img-fluid product-image" style="width: 300px;">
+                            </button>
+
+                            <button class="product-info" style="width: 300px; text-align:center; border:none; width:300px" name="id" value="@item.NHANVIENID">
+                                <div>
+                                    <h5 class="product-title">
+                                        @item.USER.HOTEN
+                                    </h5>
+                                </div>
+                                <div>
+                                    @item.USER.SODIENTHOAI
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            }
+
+        </div>
+    </section>
+
+</main>

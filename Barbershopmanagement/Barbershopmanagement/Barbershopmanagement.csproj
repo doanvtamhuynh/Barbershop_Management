@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
@@ -2442,6 +2443,8 @@
     <Content Include="Views\Security\ForgotPassword.cshtml" />
     <Content Include="Views\Services\Services.cshtml" />
     <Content Include="Views\Services\Details.cshtml" />
+    <Content Include="Views\Employees\Employees.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
