@@ -1,0 +1,51 @@
+﻿@model Barbershopmanagement.Models.USER
+
+@{
+    ViewBag.Title = "Hồ sơ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .services-details {
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+    }
+</style>
+
+
+<div class="product__details row services-details">
+
+    <div class="product__details-img col-lg-4 col-md-4">
+        <div class="big-img">
+            <img src="~/Content/images/avatar/@Model.URLHINHANH" alt="" id="zoom" style="visibility: visible;">
+        </div>
+    </div>
+
+
+    <div class="product__details-info col-lg-8 col-md-8">
+        <h5>Họ và tên</h5>
+        <div>
+            @Model.HOTEN
+        </div>
+        <hr />
+        <h5>Số điện thoại</h5>
+        <div>
+            @Model.SODIENTHOAI
+        </div>
+        <hr />
+        <h5>Email</h5>
+        <div>
+            @Model.EMAIL
+        </div>
+        <hr />
+        <h5>Địa chỉ</h5>
+        <div>
+            @Model.DIACHI
+        </div>
+        <hr />
+
+        <div class="product__cart">
+            <a href="~/Profile/EditProfile" class="product__cart-add" style="text-decoration:none">Sửa thông tin</a>
+        </div>
+    </div>
+</div>
