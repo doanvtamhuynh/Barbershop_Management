@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap/bootstrap.min.css.map" />
+    <link rel="stylesheet" href="~/Content/css/style.min.css" />
+    <link rel="stylesheet" href="~/Content/fontawesome-free-6.5.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="~/Content/css/style.css" />
+</head>
+<body>
+    <div class="header">
+
+        <div class="navbar">
+            <div class="navbar__left">
+                <a href="~/" class="navbar__logo">
+                    <img src="~/Content/images/logo.jpg" alt="">
+                </a>
+
+                <div class="navbar__menu">
+                    <i id="bars" class="fa fa-bars" aria-hidden="true"></i>
+                    <ul class="navmenu">
+
+                        @if (ViewBag.HomePageActive == 1)
+                        {
+                            <li><a href="~/" style="font-weight:bold">Trang chủ</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/" style="font-weight:normal">Trang chủ</a></li>
+                        }
+                        @if (ViewBag.SerVicesActive == 1)
+                        {
+                            <li><a href="~/Services/Services" style="font-weight:bold">Dịch vụ</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/Services/Services" style="font-weight:normal">Dịch vụ</a></li>
+                        }
+                        @if (ViewBag.ListEmployees == 1)
+                        {
+                            <li><a href="~/Employees/Employees" style="font-weight:bold">Nhân viên</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/Employees/Employees" style="font-weight:normal">Nhân viên</a></li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="navbar__center">
+                <form action="~/Services/Services" method="get" class="navbar__search" id="formSearch">
+                    <input class="search" id="message" name="search" placeholder="Nhập để tìm kiếm" type="text">
+                    <button class="search" style="text-align:center;padding-left:20px;padding-right:20px" type="submit"><i class="fa fa-search"></i> </button>
+                </form>
+            </div>
+
+            <div class="navbar__right">
+                @if (Session["userid"] != null)
+                {
+                    <div style="display: flex; align-items: center;">
+                        <div class="login" id="loginClick">
+
+                            <div class="header__navbar-item--has-info">
+                                <span>
+                                    @Session["userhoten"] <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                                <div class="header__info" style="box-shadow: 0 3px 8px rgb(0 0 0 / 15%); border-radius: 10px;">
+                                    <ul style="padding-left: 0px; padding-top:10px;">
+                                        <li class="header__info-item">
+                                            <a class="header__info-item-link" href="~/Profile/Profile"><i class="fa-solid fa-user"></i> Thông tin cá nhân</a>
+                                        </li>
+                                        <li class="header__info-item">
+                                            <a class="header__info-item-link" href="#"><i class="fa-solid fa-people-roof"></i> Admin</a>
+                                        </li>
+                                        <li class="header__info-item">
+                                            <a class="header__info-item-link" href="#"><i class="fa-solid fa-calendar-days"></i> Lịch làm việc</a>
+                                        </li>
+                                        <li class="header__info-item">
+                                            <a class="header__info-item-link" href="~/History/History"><i class="fa-solid fa-list"></i> Dịch vụ đã đặt</a>
+                                        </li>
+                                        <li class="header__info-item">
+                                            <a class="header__info-item-link" href="~/Security/LogOut"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="~/Cart/Cart" class="navbar__shoppingCart getstarted scrollto active">
+                        <img src="~/Content/images/shopping-cart.svg" style="width: 24px;" alt="">
+                        @{
+                            Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+                            int userID = (int)Session["userid"];
+                            var gioHang = db.GIOHANGs.Where(m => m.USERID == userID).FirstOrDefault();
+                            List<Barbershopmanagement.Models.CHITIETGIOHANG> chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
+                            if (chiTietGioHang != null)
+                            {
+                                <span>@chiTietGioHang.Count()</span>
+                            }
+                        }
+                    </a>
+                }
+                else
+                {
+                    <div style="display: flex; align-items: center;">
+                        <div class="login" id="loginClick">
+                            <div class="login">
+                                <a href="~/Security/Login"><i class="fa fa-user"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="go-to-top"><i class="fas fa-chevron-up"></i></div>
+
+    <div class="container" style="margin-top: 100px; margin-bottom:100px; min-height:100vh">
+        @RenderBody()
+    </div>
+
+
+
+    <footer>
+
+        <div class="footer__info" style="height:250px;">
+
+            <div class="footer__info-content">
+                <h3>Giới thiệu</h3>
+                <p>Website đặt lịch cắt tóc</p>
+            </div>
+
+
+
+            <div class="footer__info-content">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: Đà Nẵng</p>
+                <p>Email: huynhdoan.2132@gmail.com</p>
+                <p>Sđt: 0862204575</p>
+            </div>
+
+            <div class="footer__info-content">
+                <h3>Fanpage</h3>
+                <img height="120px" src="~/Content/images/footerlogo.jpg" />
+            </div>
+
+        </div>
+    </footer>
+</body>
+</html>

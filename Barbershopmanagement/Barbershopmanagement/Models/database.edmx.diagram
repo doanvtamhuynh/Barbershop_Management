@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="64beb80408844ef2890d7a8f0ed65b43" Name="Diagram1">
+        <EntityTypeShape EntityType="BarbershopManagementModel.CHITIETDONHANG" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.CHITIETGIOHANG" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.COMMENT_NHANVIEN" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.COMMENT_SERVICES" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.DICHVU" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.DONHANG" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.GIOHANG" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.NHANVIEN" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.TINHTRANGDONHANG" Width="1.5" PointX="3.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarbershopManagementModel.USER" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_CHITIETDONHANG_DICHVU" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_CHITIETDONHANG_DONHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_CHITIETGIOHANG_DICHVU" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_CHITIETGIOHANG_GIOHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_COMMENT_NHANVIEN_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_COMMENT_NHANVIEN_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_COMMENT_SERVICES_DICHVU" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_COMMENT_SERVICES_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_DONHANG_TINHTRANGDONHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_DONHANG_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_GIOHANG_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_NHANVIEN_USERS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

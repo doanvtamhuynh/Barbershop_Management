@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Đăng ký";
+}
+
+
+<form class="register-form" action="~/Security/Register" method="post">
+    <section class="vh-100">
+        <div class="container py-5 h-400 ">
+            <div class="row d-flex justify-content-center align-items-center h-100" style="background-color: gainsboro;">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem; ">
+                        <div class="card-body p-5 text-center">
+
+                            <h3 class="mb-5">Đăng ký</h3>
+                            @if (TempData["ErrorRegister"] != null)
+                            {
+                                <div class="form-outline mb-4">
+                                    <span style="color:red">@TempData["ErrorRegister"]</span>
+                                </div>
+                            }
+
+                            <div class="form-outline mb-4">
+                                <input type="text" maxlength="50" class="form-control form-control-lg" placeholder="Tên đăng nhập" name="username" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" maxlength="50" class="form-control form-control-lg" placeholder="Mật khẩu" name="password" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" maxlength="50" class="form-control form-control-lg" placeholder="Nhập lại mật khẩu" name="confirmpassword" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" maxlength="50" class="form-control form-control-lg" placeholder="Họ và tên" name="hoten" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" maxlength="10" class="form-control form-control-lg" placeholder="Số điện thoại" max="10" name="sodienthoai" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="email" maxlength="50" class="form-control form-control-lg" placeholder="Email" name="email" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" maxlength="200" class="form-control form-control-lg" placeholder="Địa chỉ" name="diachi" />
+                            </div>
+
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Đăng ký</button>
+
+                            <hr class="my-4">
+                            <a href="~/Security/Login">Đăng nhập</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</form>

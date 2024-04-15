@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BarbershopManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHITIETDONHANG">
+    <Key>
+      <PropertyRef Name="CHITIETDONHANGID" />
+    </Key>
+    <Property Name="CHITIETDONHANGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DONHANGID" Type="Int32" Nullable="false" />
+    <Property Name="DICHVUID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DICHVU" Relationship="Self.FK_CHITIETDONHANG_DICHVU" FromRole="CHITIETDONHANG" ToRole="DICHVU" />
+    <NavigationProperty Name="DONHANG" Relationship="Self.FK_CHITIETDONHANG_DONHANG" FromRole="CHITIETDONHANG" ToRole="DONHANG" />
+  </EntityType>
+  <EntityType Name="CHITIETGIOHANG">
+    <Key>
+      <PropertyRef Name="CHITIETGIOHANGID" />
+    </Key>
+    <Property Name="CHITIETGIOHANGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GIOHANGID" Type="Int32" Nullable="false" />
+    <Property Name="DICHVUID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DICHVU" Relationship="Self.FK_CHITIETGIOHANG_DICHVU" FromRole="CHITIETGIOHANG" ToRole="DICHVU" />
+    <NavigationProperty Name="GIOHANG" Relationship="Self.FK_CHITIETGIOHANG_GIOHANG" FromRole="CHITIETGIOHANG" ToRole="GIOHANG" />
+  </EntityType>
+  <EntityType Name="COMMENT_NHANVIEN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="NHANVIENID" Type="Int32" Nullable="false" />
+    <Property Name="NOIDUNG" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_COMMENT_NHANVIEN_NHANVIEN" FromRole="COMMENT_NHANVIEN" ToRole="NHANVIEN" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_COMMENT_NHANVIEN_USERS" FromRole="COMMENT_NHANVIEN" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="COMMENT_SERVICES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="DICHVUID" Type="Int32" Nullable="false" />
+    <Property Name="NOIDUNG" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DICHVU" Relationship="Self.FK_COMMENT_SERVICES_DICHVU" FromRole="COMMENT_SERVICES" ToRole="DICHVU" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_COMMENT_SERVICES_USERS" FromRole="COMMENT_SERVICES" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="DICHVU">
+    <Key>
+      <PropertyRef Name="DICHVUID" />
+    </Key>
+    <Property Name="DICHVUID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENDICHVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GIADICHVU" Type="Double" Nullable="false" />
+    <Property Name="THOIGIANTHUCHIEN" Type="Int32" Nullable="false" />
+    <Property Name="MOTA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="URLHINHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CHITIETDONHANG_DICHVU" FromRole="DICHVU" ToRole="CHITIETDONHANG" />
+    <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_CHITIETGIOHANG_DICHVU" FromRole="DICHVU" ToRole="CHITIETGIOHANG" />
+    <NavigationProperty Name="COMMENT_SERVICES" Relationship="Self.FK_COMMENT_SERVICES_DICHVU" FromRole="DICHVU" ToRole="COMMENT_SERVICES" />
+  </EntityType>
+  <EntityType Name="DONHANG">
+    <Key>
+      <PropertyRef Name="DONHANGID" />
+    </Key>
+    <Property Name="DONHANGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="NHANVIENID" Type="Int32" Nullable="false" />
+    <Property Name="THOIGIAN" Type="DateTime" Precision="3" />
+    <Property Name="TINHTRANGID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CHITIETDONHANG_DONHANG" FromRole="DONHANG" ToRole="CHITIETDONHANG" />
+    <NavigationProperty Name="TINHTRANGDONHANG" Relationship="Self.FK_DONHANG_TINHTRANGDONHANG" FromRole="DONHANG" ToRole="TINHTRANGDONHANG" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_DONHANG_USERS" FromRole="DONHANG" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="GIOHANG">
+    <Key>
+      <PropertyRef Name="GIOHANGID" />
+    </Key>
+    <Property Name="GIOHANGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_CHITIETGIOHANG_GIOHANG" FromRole="GIOHANG" ToRole="CHITIETGIOHANG" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_GIOHANG_USERS" FromRole="GIOHANG" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="NHANVIENID" />
+    </Key>
+    <Property Name="NHANVIENID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="COMMENT_NHANVIEN" Relationship="Self.FK_COMMENT_NHANVIEN_NHANVIEN" FromRole="NHANVIEN" ToRole="COMMENT_NHANVIEN" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_NHANVIEN_USERS" FromRole="NHANVIEN" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TINHTRANGDONHANG">
+    <Key>
+      <PropertyRef Name="TINHTRANGID" />
+    </Key>
+    <Property Name="TINHTRANGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TINHTRANG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DONHANGs" Relationship="Self.FK_DONHANG_TINHTRANGDONHANG" FromRole="TINHTRANGDONHANG" ToRole="DONHANG" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENDANGNHAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SODIENTHOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ROLE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="URLHINHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="COMMENT_NHANVIEN" Relationship="Self.FK_COMMENT_NHANVIEN_USERS" FromRole="USERS" ToRole="COMMENT_NHANVIEN" />
+    <NavigationProperty Name="COMMENT_SERVICES" Relationship="Self.FK_COMMENT_SERVICES_USERS" FromRole="USERS" ToRole="COMMENT_SERVICES" />
+    <NavigationProperty Name="DONHANGs" Relationship="Self.FK_DONHANG_USERS" FromRole="USERS" ToRole="DONHANG" />
+    <NavigationProperty Name="GIOHANGs" Relationship="Self.FK_GIOHANG_USERS" FromRole="USERS" ToRole="GIOHANG" />
+    <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN_USERS" FromRole="USERS" ToRole="NHANVIEN" />
+  </EntityType>
+  <Association Name="FK_CHITIETDONHANG_DICHVU">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="DICHVUID" />
+      </Principal>
+      <Dependent Role="CHITIETDONHANG">
+        <PropertyRef Name="DICHVUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIETDONHANG_DONHANG">
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONHANG">
+        <PropertyRef Name="DONHANGID" />
+      </Principal>
+      <Dependent Role="CHITIETDONHANG">
+        <PropertyRef Name="DONHANGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIETGIOHANG_DICHVU">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="DICHVUID" />
+      </Principal>
+      <Dependent Role="CHITIETGIOHANG">
+        <PropertyRef Name="DICHVUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIETGIOHANG_GIOHANG">
+    <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GIOHANG">
+        <PropertyRef Name="GIOHANGID" />
+      </Principal>
+      <Dependent Role="CHITIETGIOHANG">
+        <PropertyRef Name="GIOHANGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMMENT_NHANVIEN_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="COMMENT_NHANVIEN" Type="Self.COMMENT_NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="NHANVIENID" />
+      </Principal>
+      <Dependent Role="COMMENT_NHANVIEN">
+        <PropertyRef Name="NHANVIENID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMMENT_NHANVIEN_USERS">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="COMMENT_NHANVIEN" Type="Self.COMMENT_NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="COMMENT_NHANVIEN">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMMENT_SERVICES_DICHVU">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="COMMENT_SERVICES" Type="Self.COMMENT_SERVICES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="DICHVUID" />
+      </Principal>
+      <Dependent Role="COMMENT_SERVICES">
+        <PropertyRef Name="DICHVUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMMENT_SERVICES_USERS">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="COMMENT_SERVICES" Type="Self.COMMENT_SERVICES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="COMMENT_SERVICES">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONHANG_TINHTRANGDONHANG">
+    <End Role="TINHTRANGDONHANG" Type="Self.TINHTRANGDONHANG" Multiplicity="1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TINHTRANGDONHANG">
+        <PropertyRef Name="TINHTRANGID" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="TINHTRANGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONHANG_USERS">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIOHANG_USERS">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="GIOHANG">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_USERS">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BarbershopManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHITIETDONHANGs" EntityType="Self.CHITIETDONHANG" />
+    <EntitySet Name="CHITIETGIOHANGs" EntityType="Self.CHITIETGIOHANG" />
+    <EntitySet Name="COMMENT_NHANVIEN" EntityType="Self.COMMENT_NHANVIEN" />
+    <EntitySet Name="COMMENT_SERVICES" EntityType="Self.COMMENT_SERVICES" />
+    <EntitySet Name="DICHVUs" EntityType="Self.DICHVU" />
+    <EntitySet Name="DONHANGs" EntityType="Self.DONHANG" />
+    <EntitySet Name="GIOHANGs" EntityType="Self.GIOHANG" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TINHTRANGDONHANGs" EntityType="Self.TINHTRANGDONHANG" />
+    <EntitySet Name="USERS" EntityType="Self.USER" />
+    <AssociationSet Name="FK_CHITIETDONHANG_DICHVU" Association="Self.FK_CHITIETDONHANG_DICHVU">
+      <End Role="DICHVU" EntitySet="DICHVUs" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIETDONHANG_DONHANG" Association="Self.FK_CHITIETDONHANG_DONHANG">
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIETGIOHANG_DICHVU" Association="Self.FK_CHITIETGIOHANG_DICHVU">
+      <End Role="DICHVU" EntitySet="DICHVUs" />
+      <End Role="CHITIETGIOHANG" EntitySet="CHITIETGIOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIETGIOHANG_GIOHANG" Association="Self.FK_CHITIETGIOHANG_GIOHANG">
+      <End Role="GIOHANG" EntitySet="GIOHANGs" />
+      <End Role="CHITIETGIOHANG" EntitySet="CHITIETGIOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMMENT_NHANVIEN_NHANVIEN" Association="Self.FK_COMMENT_NHANVIEN_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="COMMENT_NHANVIEN" EntitySet="COMMENT_NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMMENT_NHANVIEN_USERS" Association="Self.FK_COMMENT_NHANVIEN_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="COMMENT_NHANVIEN" EntitySet="COMMENT_NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMMENT_SERVICES_DICHVU" Association="Self.FK_COMMENT_SERVICES_DICHVU">
+      <End Role="DICHVU" EntitySet="DICHVUs" />
+      <End Role="COMMENT_SERVICES" EntitySet="COMMENT_SERVICES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMMENT_SERVICES_USERS" Association="Self.FK_COMMENT_SERVICES_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="COMMENT_SERVICES" EntitySet="COMMENT_SERVICES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONHANG_TINHTRANGDONHANG" Association="Self.FK_DONHANG_TINHTRANGDONHANG">
+      <End Role="TINHTRANGDONHANG" EntitySet="TINHTRANGDONHANGs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONHANG_USERS" Association="Self.FK_DONHANG_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIOHANG_USERS" Association="Self.FK_GIOHANG_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="GIOHANG" EntitySet="GIOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_USERS" Association="Self.FK_NHANVIEN_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BarbershopManagementModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BarbershopManagementModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

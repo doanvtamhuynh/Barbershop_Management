@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Barbershopmanagement.Models.CHITIETGIOHANG>
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+    List<Barbershopmanagement.Models.NHANVIEN> dsNhanVien = db.NHANVIENs.Where(m => m.USER.ROLE == "nhanvien").ToList();
+}
+
+<div class="cart__body">
+    <div class="row">
+        <div class="col-lg-8 cart__items-box">
+            <a href="~/Services/Services" class="btn btn-danger">Tiếp tục mua sắm</a>
+            @if (Model.Count() == 0 || Model == null)
+            {
+                <div class="emptyCart">
+                    <img src="~/Content/images/empty_cart.png" alt="">
+                </div>
+            }
+            else
+            {
+                <div class="cart__items">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-sm-3 col-5 mt-2" style="margin-bottom:20px">
+                                <img src="~/Content/images/@item.DICHVU.URLHINHANH" alt="" class="cart__items-img">
+                            </div>
+                            <div class="col-sm-9 col-7 mt-2">
+                                <h3>
+                                    @item.DICHVU.TENDICHVU
+                                </h3>
+
+                                <br>
+                                <div class="cart__items-pride">
+                                    <div class="product__pride-newPride">
+                                        <span class="Price">
+                                            <bdi>
+                                                @string.Format("{0:N0}", item.DICHVU.GIADICHVU)
+                                                <span class="currencySymbol">₫</span>
+                                            </bdi>
+                                        </span>
+                                    </div>
+
+                                    <div class="cart__items-count">
+                                        Thời gian thực hiện:
+                                        @item.DICHVU.THOIGIANTHUCHIEN phút
+                                    </div>
+
+                                </div>
+                                <form action="~/Cart/RemoveItem" method="post">
+                                    <button class="btn btn-sm btn-danger" type="submit" value="@item.DICHVUID" name="id">Xóa sản phẩm</button>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!--Order-->
+        <form action="~/Cart/Order" method="post" class="col-lg-4" style="padding-left: 20px; padding-right: 10px;">
+            <div>
+                <div class="cart__info">
+                    <div class="body__mainTitle">
+                        <h2>ĐẶT LỊCH HẸN</h2>
+                    </div>
+                    <h5>
+                        Nhân viên:
+                    </h5>
+                    <div>
+                        <select style="width:90%; margin-bottom:30px" name="nhanvienid">
+                            @foreach (var item in dsNhanVien)
+                            {
+                                <option value="@item.NHANVIENID">
+                                    @item.USER.HOTEN
+                                </option>
+                            }
+                        </select>
+                    </div>
+                    <h5>
+                        Thời gian:
+                    </h5>
+                    <div>
+                        <input type="datetime-local" id="datetime" style="width:90%; margin-bottom:30px" name="datetime" />
+                    </div>
+                    <hr />
+                    <div class="total">
+                        <h5>Tổng thời gian: </h5>
+                        <br>
+                        <div class="product__pride-newPride" style="font-size: 25px;">
+                            <span class="Price">
+                                @{
+                                    int time = 0;
+                                    foreach (var item in Model)
+                                    {
+                                        time += item.DICHVU.THOIGIANTHUCHIEN;
+                                    }
+                                    BarbershopManagement.Helpers.Helpers help = new BarbershopManagement.Helpers.Helpers();
+                                    string tongThoiGian = help.tongThoiGian(time);
+                                }
+                                @tongThoiGian
+                            </span>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <h5>Tổng thanh toán: </h5>
+                        <br>
+                        <div class="product__pride-newPride" style="font-size: 25px;">
+                            <span class="Price">
+                                @{
+                                    double total = 0;
+                                    foreach (var item in Model)
+                                    {
+                                        total += item.DICHVU.GIADICHVU;
+                                    }
+                                }
+                                @string.Format("{0:N0}", total)
+                                <span class="currencySymbol">₫</span>
+                            </span>
+                        </div>
+                    </div>
+                    <center><button class="buy" type="submit">Đặt lịch</button></center>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script defer>
+    // Lấy thẻ input datetime
+    var datetimeInput = document.getElementById("datetime");
+
+    // Lấy ngày và giờ hiện tại
+    var now = new Date();
+
+    // Định dạng ngày và giờ thành chuỗi ISO 8601 (yyyy-mm-ddThh:mm)
+    var currentDatetime = now.toISOString().slice(0, 16);
+
+    // Gán giá trị ngày và giờ hiện tại vào thẻ input datetime
+    datetimeInput.value = currentDatetime;
+</script>

@@ -1,0 +1,75 @@
+﻿
+.header__navbar-item--has-info:hover .header__info {
+    display: block;
+}
+
+/* Header Info */
+
+.header__info {
+    position: absolute;
+    top: 118%;
+    right: 0;
+    width: 160px;
+    background-color: white;
+    cursor: default;
+    transform-origin: calc(90% - 20px) top;
+    animation: headerinfoGrowth ease-in 0.2s;
+    will-change: opacity, transform;
+    display: none;
+}
+
+.header__info-item{
+    list-style:none;
+    border-bottom:solid;
+    border-color: gainsboro;
+    margin-left: 0;
+    padding-left:0;
+}
+
+.header__info-item-link{
+    color: black;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+.header__info::before {
+    content: "";
+    border-width: 20px 26px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    position: absolute;
+    right: 4px;
+    top: -30px;
+}
+
+    .header__info::after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        top: -16px;
+        width: 90px;
+        height: 20px;
+    }
+
+@keyframes headerinfoGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(0.5);
+    }
+}
+
+
+/*Register*/
+
+.register-form{
+    height:875px
+}
+
+
+

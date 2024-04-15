@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Đăng nhập";
+}
+
+<form action="~/Security/Login" method="post">
+    <section class="vh-100" style="background-color: gainsboro;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <h3 class="mb-5">Đăng nhập</h3>
+                            @if (TempData["ErrorLogin"] != null)
+                            {
+                                <div class="form-outline mb-4">
+                                    <span style="color:red">@TempData["ErrorLogin"]</span>
+                                </div>
+                            }
+                            @if (TempData["Register"] != null)
+                            {
+                                <div class="form-outline mb-4">
+                                    <span style="color:green">@TempData["Register"]</span>
+                                </div>
+                            }
+                            @if (TempData["ForgotPassword"] != null)
+                            {
+                                <div class="form-outline mb-4">
+                                    <span style="color:green">@TempData["ForgotPassword"]</span>
+                                </div>
+                            }
+
+                            <div class="form-outline mb-4">
+                                <input type="text" class="form-control form-control-lg" placeholder="Tên đăng nhập" name="username" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Mật khẩu" name="password" />
+                            </div>
+                            <div class="form-check d-flex justify-content-start mb-4">
+                                <a href="~/Security/ForgotPassword">Quên mật khẩu?</a>
+                                <a href="~/Security/Register" style="margin-left:130px">Đăng ký tài khoản?</a>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Đăng nhập</button>
+
+                            <hr class="my-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</form>
