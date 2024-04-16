@@ -208,6 +208,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DONHANG_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="NHANVIENID" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="NHANVIENID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DONHANG_TINHTRANGDONHANG">
     <End Role="TINHTRANGDONHANG" Type="Self.TINHTRANGDONHANG" Multiplicity="1" />
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
@@ -249,9 +261,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NHANVIEN_USERS">
-    <End Role="USERS" Type="Self.USERS" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
     <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="USERS">
@@ -336,6 +346,10 @@
     <AssociationSet Name="FK_COMMENT_SERVICES_USERS" Association="Self.FK_COMMENT_SERVICES_USERS">
       <End Role="USERS" EntitySet="USERS" />
       <End Role="COMMENT_SERVICES" EntitySet="COMMENT_SERVICES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONHANG_NHANVIEN" Association="Self.FK_DONHANG_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
     </AssociationSet>
     <AssociationSet Name="FK_DONHANG_TINHTRANGDONHANG" Association="Self.FK_DONHANG_TINHTRANGDONHANG">
       <End Role="TINHTRANGDONHANG" EntitySet="TINHTRANGDONHANG" />

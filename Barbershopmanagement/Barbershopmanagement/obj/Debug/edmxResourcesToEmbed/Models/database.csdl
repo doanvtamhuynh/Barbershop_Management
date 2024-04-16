@@ -68,6 +68,7 @@
     <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CHITIETDONHANG_DONHANG" FromRole="DONHANG" ToRole="CHITIETDONHANG" />
     <NavigationProperty Name="TINHTRANGDONHANG" Relationship="Self.FK_DONHANG_TINHTRANGDONHANG" FromRole="DONHANG" ToRole="TINHTRANGDONHANG" />
     <NavigationProperty Name="USER" Relationship="Self.FK_DONHANG_USERS" FromRole="DONHANG" ToRole="USERS" />
+    <NavigationProperty Name="NHANVIEN" Relationship="BarbershopManagementModel.FK_DONHANG_NHANVIEN" FromRole="DONHANG" ToRole="NHANVIEN" />
   </EntityType>
   <EntityType Name="GIOHANG">
     <Key>
@@ -86,6 +87,7 @@
     <Property Name="USERID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="COMMENT_NHANVIEN" Relationship="Self.FK_COMMENT_NHANVIEN_NHANVIEN" FromRole="NHANVIEN" ToRole="COMMENT_NHANVIEN" />
     <NavigationProperty Name="USER" Relationship="Self.FK_NHANVIEN_USERS" FromRole="NHANVIEN" ToRole="USERS" />
+    <NavigationProperty Name="DONHANGs" Relationship="BarbershopManagementModel.FK_DONHANG_NHANVIEN" FromRole="NHANVIEN" ToRole="DONHANG" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -376,6 +378,10 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <AssociationSet Name="FK_DONHANG_NHANVIEN" Association="BarbershopManagementModel.FK_DONHANG_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -388,4 +394,16 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <Association Name="FK_DONHANG_NHANVIEN">
+    <End Type="BarbershopManagementModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+    <End Type="BarbershopManagementModel.DONHANG" Role="DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="NHANVIENID" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="NHANVIENID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

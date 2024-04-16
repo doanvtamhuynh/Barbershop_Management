@@ -28,6 +28,7 @@
         <AssociationConnector Association="BarbershopManagementModel.FK_DONHANG_USERS" ManuallyRouted="false" />
         <AssociationConnector Association="BarbershopManagementModel.FK_GIOHANG_USERS" ManuallyRouted="false" />
         <AssociationConnector Association="BarbershopManagementModel.FK_NHANVIEN_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="BarbershopManagementModel.FK_DONHANG_NHANVIEN" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -81,7 +81,7 @@ namespace BarbershopManagement.Controllers
                 db.SaveChanges();
             }
             catch (Exception ex) { }
-            return RedirectToAction("History", "History");
+            return RedirectToAction("History", "OrderHistory");
         }
     }
 }

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Barbershopmanagement.Models.DONHANG>
+
+@{
+    ViewBag.Title = "Lịch sử đặt lịch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+
+}
+<style>
+    .history {
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+    }
+
+    .styled-link {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        background-color: #808080;
+        border: solid;
+        border-color: #ffffff;
+        border-radius: 5px;
+        padding: 3px;
+        transition: color 0.3s ease;
+    }
+
+        .styled-link:hover {
+            color: #0056b3;
+        }
+</style>
+
+<h2>Lịch sử</h2>
+<div class="container history">
+    <table class="table">
+        <tr>
+            <th>
+                Người đặt lịch
+            </th>
+            <th>
+                Nhân viên
+            </th>
+            <th>
+                Thời gian đặt lịch
+            </th>
+            <th>
+                Tổng thời gian thực hiện
+            </th>
+            <th>
+                Tổng tiền thanh toán
+            </th>
+            <th>
+                Tình trang
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USER.HOTEN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NHANVIEN.USER.HOTEN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.THOIGIAN)
+                </td>
+                <td>
+                    @{
+                        List<Barbershopmanagement.Models.CHITIETDONHANG> chitietDH = db.CHITIETDONHANGs.Where(m => m.DONHANGID == item.DONHANGID).ToList();
+                        int time = 0;
+                        foreach (var j in chitietDH)
+                        {
+                            time += j.DICHVU.THOIGIANTHUCHIEN;
+                        }
+                        BarbershopManagement.Helpers.Helpers help = new BarbershopManagement.Helpers.Helpers();
+                        string tongThoiGian = help.tongThoiGian(time);
+                    }
+                    @tongThoiGian
+                </td>
+                <td>
+                    @{
+                        double total = 0;
+                        foreach (var i in chitietDH)
+                        {
+                            total += i.DICHVU.GIADICHVU;
+                        }
+
+                    }
+                    @string.Format("{0:N0}", total)
+                    <span class="currencySymbol">₫</span>
+                </td>
+                <td>
+                    @if (item.TINHTRANGID == 2)
+                    {
+                        <span style="color:green">Đơn hàng đã được xác nhận.</span>
+                    }
+                    else if (item.TINHTRANGID == 1)
+                    {
+                        <span style="color:red">Đơn hàng chưa được xác nhận.</span>
+                    }
+                    else
+                    {
+                        <span style="color:green">Đã hoàn thành</span>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.DONHANGID }, new { @class = "styled-link" })
+                </td>
+                @if (item.TINHTRANGID == 1)
+                {
+                    <td>
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.DONHANGID }, new { @class = "styled-link", style = "background-color: red;" })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>
+

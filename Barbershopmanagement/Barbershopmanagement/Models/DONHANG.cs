@@ -30,5 +30,6 @@ namespace Barbershopmanagement.Models
         public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
         public virtual TINHTRANGDONHANG TINHTRANGDONHANG { get; set; }
         public virtual USER USER { get; set; }
+        public virtual NHANVIEN NHANVIEN { get; set; }
     }
 }
