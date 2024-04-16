@@ -36,17 +36,17 @@ namespace BarbershopManagement.Controllers
         [HttpPost]
         public ActionResult AddServiceToCart(int id)
         {
-            if (Session["userid"] == null)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Login", "Security");
             }
-            int userID = (int)Session["userid"];
-            var gioHang = db.GIOHANGs.Where(m => m.USERID == userID).FirstOrDefault();
+            var user = (USER)Session["user"];
+            var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
 
             if (gioHang == null)
             {
                 GIOHANG newGioHang = new GIOHANG();
-                newGioHang.USERID = userID;
+                newGioHang.USERID = user.USERID;
                 db.GIOHANGs.Add(newGioHang);
                 try
                 {
@@ -82,16 +82,16 @@ namespace BarbershopManagement.Controllers
         public ActionResult Comment(string comment, int id)
         {
 
-            if (Session["userid"] == null)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Login", "Security");
             }
-            int userID = (int)Session["userid"];
-            var dongHang = db.CHITIETDONHANGs.Where(m => m.DICHVUID == id && m.DONHANG.USERID == userID && m.DONHANG.TINHTRANGID == 3).FirstOrDefault();
+            var user = (USER)Session["user"];
+            var dongHang = db.CHITIETDONHANGs.Where(m => m.DICHVUID == id && m.DONHANG.USERID == user.USERID && m.DONHANG.TINHTRANGID == 3).FirstOrDefault();
             if (dongHang != null)
             {
                 COMMENT_SERVICES cm = new COMMENT_SERVICES();
-                cm.USERID = userID;
+                cm.USERID = user.USERID;
                 cm.DICHVUID = id;
                 cm.NOIDUNG = comment;
                 db.COMMENT_SERVICES.Add(cm);

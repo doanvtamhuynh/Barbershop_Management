@@ -27,16 +27,16 @@ namespace BarbershopManagement.Controllers
         public ActionResult Comment(string comment, int id)
         {
 
-            if (Session["userid"] == null)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Login", "Security");
             }
-            int userID = (int)Session["userid"];
-            var dongHang = db.DONHANGs.Where(m => m.NHANVIENID == id && m.USERID == userID && m.TINHTRANGID == 3).FirstOrDefault();
+            USER user = (USER)Session["user"];
+            var dongHang = db.DONHANGs.Where(m => m.NHANVIENID == id && m.USERID == user.USERID && m.TINHTRANGID == 3).FirstOrDefault();
             if (dongHang != null)
             {
                 COMMENT_NHANVIEN cm = new COMMENT_NHANVIEN();
-                cm.USERID = userID;
+                cm.USERID = user.USERID;
                 cm.NHANVIENID = id;
                 cm.NOIDUNG = comment;
                 db.COMMENT_NHANVIEN.Add(cm);

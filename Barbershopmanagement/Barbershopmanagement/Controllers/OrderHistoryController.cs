@@ -13,12 +13,12 @@ namespace Barbershopmanagement.Controllers
         // GET: History
         public ActionResult History()
         {
-            if (Session["userid"] == null)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Login", "Security");
             }
-            int userID = (int)Session["userid"];
-            List<DONHANG> dsDonHang = db.DONHANGs.Where(m => m.USERID == userID).ToList();
+            var user = (USER)Session["user"];
+            List<DONHANG> dsDonHang = db.DONHANGs.Where(m => m.USERID == user.USERID).ToList();
             return View(dsDonHang);
         }
 

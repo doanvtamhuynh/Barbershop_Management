@@ -14,13 +14,40 @@ namespace BarbershopManagement.Areas.Admin.Controllers
         BarbershopManagementEntities db = new BarbershopManagementEntities();
         public ActionResult Index()
         {
-            List<DICHVU> dsDichVu = db.DICHVUs.ToList();
-            return View(dsDichVu);
+            if (Session["user"] != null)
+            {
+                USER user = (USER)Session["user"];
+                Barbershopmanagement.Helpers.Authorization auth = new Barbershopmanagement.Helpers.Authorization();
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    List<DICHVU> dsDichVu = db.DICHVUs.ToList();
+                    return View(dsDichVu);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
+            }
+            return RedirectToAction("Login", "Security");
+            
         }
 
         public ActionResult ThemDichVu()
         {
-            return View();
+            if (Session["user"] != null)
+            {
+                USER user = (USER)Session["user"];
+                Barbershopmanagement.Helpers.Authorization auth = new Barbershopmanagement.Helpers.Authorization();
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
+            }
+            return RedirectToAction("Login", "Security");
         }
 
         [HttpPost]

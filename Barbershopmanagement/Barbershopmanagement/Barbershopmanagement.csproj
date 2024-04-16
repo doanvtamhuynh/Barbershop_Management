@@ -143,6 +143,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Authorization.cs" />
     <Compile Include="Helpers\EmailService.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Models\CHITIETDONHANG.cs">

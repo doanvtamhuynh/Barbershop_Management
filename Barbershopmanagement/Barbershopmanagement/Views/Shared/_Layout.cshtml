@@ -60,26 +60,35 @@
             </div>
 
             <div class="navbar__right">
-                @if (Session["userid"] != null)
+                @if (Session["user"] != null)
                 {
                     <div style="display: flex; align-items: center;">
                         <div class="login" id="loginClick">
 
                             <div class="header__navbar-item--has-info">
                                 <span>
-                                    @Session["userhoten"] <i class="fa-solid fa-chevron-down"></i>
+                                    @{ 
+                                        var user = (Barbershopmanagement.Models.USER)Session["user"];
+                                    }
+                                    @user.HOTEN <i class="fa-solid fa-chevron-down"></i>
                                 </span>
                                 <div class="header__info" style="box-shadow: 0 3px 8px rgb(0 0 0 / 15%); border-radius: 10px;">
                                     <ul style="padding-left: 0px; padding-top:10px;">
                                         <li class="header__info-item">
                                             <a class="header__info-item-link" href="~/Profile/Profile"><i class="fa-solid fa-user"></i> Thông tin cá nhân</a>
                                         </li>
-                                        <li class="header__info-item">
-                                            <a class="header__info-item-link" href="#"><i class="fa-solid fa-people-roof"></i> Admin</a>
-                                        </li>
-                                        <li class="header__info-item">
-                                            <a class="header__info-item-link" href="#"><i class="fa-solid fa-calendar-days"></i> Lịch làm việc</a>
-                                        </li>
+                                        @if (user.ROLE == "admin")
+                                        {
+                                            <li class="header__info-item">
+                                                <a class="header__info-item-link" href="~/Admin/Home/"><i class="fa-solid fa-people-roof"></i> Admin</a>
+                                            </li>
+                                        }
+                                        @if (user.ROLE == "nhanvien")
+                                        {
+                                            <li class="header__info-item">
+                                                <a class="header__info-item-link" href="#"><i class="fa-solid fa-calendar-days"></i> Lịch làm việc</a>
+                                            </li>
+                                        }
                                         <li class="header__info-item">
                                             <a class="header__info-item-link" href="~/OrderHistory/History"><i class="fa-solid fa-list"></i> Dịch vụ đã đặt</a>
                                         </li>
@@ -95,8 +104,7 @@
                         <img src="~/Content/images/shopping-cart.svg" style="width: 24px;" alt="">
                         @{
                             Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
-                            int userID = (int)Session["userid"];
-                            var gioHang = db.GIOHANGs.Where(m => m.USERID == userID).FirstOrDefault();
+                            var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
                             List<Barbershopmanagement.Models.CHITIETGIOHANG> chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
                             if (chiTietGioHang != null)
                             {

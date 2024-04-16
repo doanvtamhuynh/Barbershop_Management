@@ -13,16 +13,16 @@ namespace BarbershopManagement.Controllers
         // GET: Cart
         public ActionResult Cart()
         {
-            if (Session["userid"] == null)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Login", "Security");
             }
-            int userID = (int)Session["userid"];
-            var gioHang = db.GIOHANGs.Where(m => m.USERID == userID).FirstOrDefault();
+            var user = (USER)Session["user"];
+            var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
             if (gioHang == null)
             {
                 GIOHANG newGioHang = new GIOHANG();
-                newGioHang.USERID = userID;
+                newGioHang.USERID = user.USERID;
                 db.GIOHANGs.Add(newGioHang);
                 try
                 {
@@ -37,8 +37,8 @@ namespace BarbershopManagement.Controllers
         [HttpPost]
         public ActionResult RemoveItem(int id)
         {
-            int userID = (int)Session["userid"];
-            var gioHang = db.GIOHANGs.Where(m => m.USERID == userID).FirstOrDefault();
+            var user = (USER)Session["user"];
+            var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
             var item = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID && m.DICHVUID == id);
             db.CHITIETGIOHANGs.RemoveRange(item);
             try
@@ -52,8 +52,8 @@ namespace BarbershopManagement.Controllers
         [HttpPost]
         public ActionResult Order(int nhanvienid, DateTime datetime)
         {
-            int userID = (int)Session["userid"];
-            GIOHANG gioHang = db.GIOHANGs.Where(m => m.USERID == userID).SingleOrDefault();
+            var user = (USER)Session["user"];
+            GIOHANG gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).SingleOrDefault();
             List<CHITIETGIOHANG> chitietGH = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
             if (chitietGH.Count == 0)
             {
@@ -61,7 +61,7 @@ namespace BarbershopManagement.Controllers
             }
 
             DONHANG donHang = new DONHANG();
-            donHang.USERID = userID;
+            donHang.USERID = user.USERID;
             donHang.NHANVIENID = nhanvienid;
             donHang.THOIGIAN = datetime;
             donHang.TINHTRANGID = 1;

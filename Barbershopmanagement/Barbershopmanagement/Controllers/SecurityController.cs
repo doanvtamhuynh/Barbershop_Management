@@ -27,10 +27,8 @@ namespace BarbershopManagement.Controllers
             var taiKhoan = db.USERS.SingleOrDefault(m => m.TENDANGNHAP == username && m.PASSWORD == password);
             if (taiKhoan != null)
             {
-                TempData["ErrorLogin"] = null;
-                Session["userid"] = taiKhoan.USERID;
-                Session["userhoten"] = taiKhoan.HOTEN;
-                return RedirectToAction("Index", "Home");
+                Session["user"] = taiKhoan;
+                return RedirectToAction("Index", "HomePage");
             }
             else
             {
@@ -119,8 +117,7 @@ namespace BarbershopManagement.Controllers
         //LogOut
         public ActionResult LogOut()
         {
-            Session["userid"] = null;
-            Session["userhoten"] = null;
+            Session["user"] = null;
             return RedirectToAction("Login");
         }
     }

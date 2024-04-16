@@ -14,13 +14,39 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
         // GET: Admin/QLTaiKhoan
         public ActionResult Index()
         {
-            List<USER> dsTaiKhoan = db.USERS.ToList();
-            return View(dsTaiKhoan);
+            if (Session["user"] != null)
+            {
+                USER user = (USER)Session["user"];
+                Barbershopmanagement.Helpers.Authorization auth = new Barbershopmanagement.Helpers.Authorization();
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    List<USER> dsTaiKhoan = db.USERS.ToList();
+                    return View(dsTaiKhoan);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
+            }
+            return RedirectToAction("Login", "Security");
         }
 
         public ActionResult TaoTaiKhoan()
         {
-            return View();
+            if (Session["user"] != null)
+            {
+                USER user = (USER)Session["user"];
+                Barbershopmanagement.Helpers.Authorization auth = new Barbershopmanagement.Helpers.Authorization();
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
+            }
+            return RedirectToAction("Login", "Security");
         }
 
         [HttpPost]

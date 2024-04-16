@@ -12,10 +12,9 @@ namespace BarbershopManagement.Controllers
         BarbershopManagementEntities db = new BarbershopManagementEntities();
         public ActionResult Profile()
         {
-            if (Session["userid"] != null)
+            if (Session["user"] != null)
             {
-                int id = (int)Session["userid"];
-                USER model = db.USERS.Find(id);
+                USER model = (USER)Session["user"];
                 return View(model);
             }
             return RedirectToAction("Login", "Security");
@@ -23,10 +22,9 @@ namespace BarbershopManagement.Controllers
 
         public ActionResult EditProfile()
         {
-            if (Session["userid"] != null)
+            if (Session["user"] != null)
             {
-                int id = (int)Session["userid"];
-                USER model = db.USERS.Find(id);
+                USER model = (USER)Session["user"];
                 return View(model);
             }
             return RedirectToAction("Login", "Security");
@@ -45,7 +43,6 @@ namespace BarbershopManagement.Controllers
                     var findUser = db.USERS.SingleOrDefault(m => m.TENDANGNHAP == model.TENDANGNHAP);
                     if (findUser == null)
                     {
-                        TempData["EditProfile"] = null;
                         if (fileImages != null && fileImages.ContentLength > 0)
                         {
                             string rootFolder = Server.MapPath("/Content/images/avarta/");
