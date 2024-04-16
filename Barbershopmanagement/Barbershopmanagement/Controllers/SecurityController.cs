@@ -70,7 +70,7 @@ namespace BarbershopManagement.Controllers
                     {
                         db.SaveChanges();
                     }
-                    catch (Exception ex) { }
+                    catch (Exception e) { }
                     TempData["Register"] = "Tạo tài khoản thành công!";
                     return RedirectToAction("Login");
                 }

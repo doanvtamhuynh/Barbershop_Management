@@ -30,7 +30,7 @@ namespace Barbershopmanagement.Controllers
             {
                 db.SaveChanges();
             }
-            catch (Exception ex) { }
+            catch (Exception e) { }
             return RedirectToAction("History");
         }
 

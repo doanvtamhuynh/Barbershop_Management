@@ -63,7 +63,7 @@ namespace BarbershopManagement.Controllers
                         {
                             db.SaveChanges();
                         }
-                        catch (Exception ex) { }
+                        catch (Exception e) { }
                         return RedirectToAction("Profile");
                     }
                     else
@@ -92,7 +92,7 @@ namespace BarbershopManagement.Controllers
                     {
                         db.SaveChanges();
                     }
-                    catch (Exception ex) { }
+                    catch (Exception e) { }
                     return RedirectToAction("Profile");
                 }
             }

@@ -1,0 +1,97 @@
+﻿@model Barbershopmanagement.Models.USER
+
+@{
+    ViewBag.Title = "Tạo tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Active = 2;
+}
+
+<div>
+    <h4 style="margin-left:40%;font-weight:bold">TẠO TÀI KHOẢN</h4>
+</div>
+<a href="~/Admin/QLTaiKhoan/" class="buy_continute mt-4"><i class="fa fa-arrow-circle-left"></i> Trở lại</a>
+
+@using (Html.BeginForm("TaoTaiKhoan", "QLTaiKhoan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <span class="control-label col-md-2" style="color: red; margin-left: 25%">
+            @TempData["addTaiKhoan"]
+        </span>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <lable class="control-label col-md-2">Tên đăng nhập</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENDANGNHAP, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Mật khẩu</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Họ và tên</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HOTEN, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Số điện thoại</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SODIENTHOAI, new { htmlAttributes = new { @class = "form-control", maxlength = "10" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Email</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Role</lable>
+            <div class="col-md-10">
+                <select style="height:40px;width:130px;border-color:gray;border-radius:5px" name="role">
+                    <option value="khachhang">
+                        khachhang
+                    </option>
+                    <option value="nhanvien">
+                        nhanvien
+                    </option>
+                    <option value="admin">
+                        admin
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Địa chỉ</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Ảnh đại diện</lable>
+            <div class="col-md-10">
+                <input type="file" name="fileImages" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-default" style="background-color: #06ba2f;color:white;" />
+            </div>
+        </div>
+    </div>
+}

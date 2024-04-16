@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Barbershopmanagement.Models.USER>
+
+@{
+    ViewBag.Title = "Quản lí tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Active = 2;
+}
+
+<style>
+    .qldichvu_create {
+        text-align: center;
+        width: 130px;
+        height: 30px;
+        background-color: #06ba2f;
+        border-radius: 10px;
+    }
+</style>
+<div>
+    <h4 style="margin-left:40%;font-weight:bold">QUẢN LÍ TÀI KHOẢN</h4>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            AVATAR
+        </th>
+        <th>
+            HỌ TÊN
+        </th>
+        <th>
+            SỐ ĐIỆN THOẠI
+        </th>
+        <th>
+            EMAIL
+        </th>
+        <th>
+            TÊN ĐĂNG NHẬP
+        </th>
+        <th>
+            MẬT KHẨU
+        </th>
+        <th>
+            ROLE
+        </th>
+        <th>
+            ĐỊA CHỈ
+        </th>
+        <th>
+            <div class="qldichvu_create">
+                <a href="~/Admin/QLTaiKhoan/TaoTaiKhoan" style="color:white;font-weight:bold;text-decoration:none">Tạo tài khoản</a>
+            </div>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Content/images/avatar/@item.URLHINHANH" style="height:50px;border:solid" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HOTEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SODIENTHOAI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENDANGNHAP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PASSWORD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ROLE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIACHI)
+            </td>
+
+            <td style="display:inline-flex">
+                <form action="~/Admin/QLTaiKhoan/Edit" method="get">
+                    <button type="submit" value="@item.USERID" name="id" class="qldichvu_create" style="width:100px;background-color:gray;color:white;font-weight:bold;border:none">
+                        Chỉnh sửa
+                    </button>
+                </form>
+                <form action="~/Admin/QLTaiKhoan/Xoa" method="get">
+                    <button type="submit" value="@item.USERID" name="id" class="qldichvu_create" style="width:50px;background-color:red;color:white;font-weight:bold;border:none;margin-left:5px">
+                        Xóa
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (TempData["addTaiKhoan"] != null)
+{
+    <script>
+        alert("Tạo tài khoản thành công")
+    </script>
+}
+
+@if (TempData["edituser"] != null)
+{
+    <script>
+        alert("Cập nhật tài khoản thành công")
+    </script>
+}

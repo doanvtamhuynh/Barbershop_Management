@@ -28,7 +28,7 @@ namespace BarbershopManagement.Controllers
                 {
                     db.SaveChanges();
                 }
-                catch (Exception ex) { }
+                catch (Exception e) { }
             }
             List<CHITIETGIOHANG> chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
             return View(chiTietGioHang);
@@ -45,7 +45,7 @@ namespace BarbershopManagement.Controllers
             {
                 db.SaveChanges();
             }
-            catch (Exception ex) { }
+            catch (Exception e) { }
             return RedirectToAction("Cart");
         }
 
@@ -80,7 +80,7 @@ namespace BarbershopManagement.Controllers
             {
                 db.SaveChanges();
             }
-            catch (Exception ex) { }
+            catch (Exception e) { }
             return RedirectToAction("History", "OrderHistory");
         }
     }

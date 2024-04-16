@@ -52,7 +52,7 @@ namespace BarbershopManagement.Controllers
                 {
                     db.SaveChanges();
                 }
-                catch (Exception ex) { }
+                catch (Exception e) { }
             }
 
             var hadItem = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID && m.DICHVUID == id).FirstOrDefault();
@@ -67,7 +67,7 @@ namespace BarbershopManagement.Controllers
                 {
                     db.SaveChanges();
                 }
-                catch (Exception ex) { }
+                catch (Exception e) { }
                 TempData["AddServiceToCart"] = true;
                 return RedirectToAction("Services");
             }
@@ -99,7 +99,7 @@ namespace BarbershopManagement.Controllers
                 {
                     db.SaveChanges();
                 }
-                catch (Exception ex) { }
+                catch (Exception e) { }
                 return RedirectToAction("Details", new { id });
             }
             else

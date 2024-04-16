@@ -44,7 +44,7 @@ namespace BarbershopManagement.Controllers
                 {
                     db.SaveChanges();
                 }
-                catch (Exception ex) { }
+                catch (Exception e) { }
                 return RedirectToAction("Details", new { id });
             }
             else
