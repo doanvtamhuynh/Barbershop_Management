@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin | Dashboard</title>
+    <link rel="stylesheet" href="~/Content/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/Content/css/admin.css">
+    <link rel="stylesheet" href="~/Content/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap/bootstrap.min.css.map" />
+    <link rel="stylesheet" href="~/Content/css/style.min.css" />
+    <link rel="stylesheet" href="~/Content/fontawesome-free-6.5.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="~/Content/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+            <a href="#" class="brand-link">
+                <span class="brand-text font-weight-light p-2">Admin Dashboard</span>
+            </a>
+
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+                    <div class="info d-flex">
+                        <div class="d-block mr-2 text-white">admin</div>
+                        <form asp-controller="Security" asp-action="SignOut" method="post">
+                            <button type="submit" style="margin-left: 10px; border:none; outline:none; background: white;">
+                                <span class="fas fa-sign-out-alt"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+
+                        @if (ViewBag.Active == 0)
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/Home/Index" class="nav-link active">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>
+                                        Trang Chủ
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/Home/Index" class="nav-link">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>
+                                        Trang Chủ
+                                    </p>
+                                </a>
+                            </li>
+                        }
+
+
+                        <li class="nav-header">CHỨC NĂNG</li>
+                        @if (ViewBag.Active == 1)
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/QLDichVu/" class="nav-link active">
+                                    <i class="fa-solid fa-circle nav-icon"></i>
+                                    <p>
+                                        Quản lí dịch vụ
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/QLDichVu/" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Quản lí dịch vụ
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        @if (ViewBag.Active == 2)
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/QLTaiKhoan/" class="nav-link active">
+                                    <i class="fa-solid fa-circle nav-icon"></i>
+                                    <p>
+                                        Quản lí tài khoản
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/QLTaiKhoan/" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Quản lí tài khoản
+                                    </p>
+                                </a>
+                            </li>
+                        }
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link @*active*@">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Quản lí lịch hẹn
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-header">Thống kê</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>Doanh thu</p>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="content-wrapper">
+            <div style="margin-left:20px">
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
