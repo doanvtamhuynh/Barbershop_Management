@@ -1,0 +1,62 @@
+﻿@model Barbershopmanagement.Models.DICHVU
+
+@{
+    ViewBag.Title = "Thêm dịch vụ";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Active = 1;
+}
+
+<div>
+    <h4 style="margin-left:40%;font-weight:bold">THÊM DỊCH VỤ</h4>
+</div>
+<a href="~/Admin/QLDichVu/" class="buy_continute mt-4"><i class="fa fa-arrow-circle-left"></i> Trở lại</a>
+
+<form action="~/Admin/QLDichVu/ThemDichVu" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <hr />
+        <span class="control-label col-md-2" style="color: red; margin-left: 25%">
+            @TempData["addservice"]
+        </span>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <lable class="control-label col-md-2">Tên dịch vụ</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENDICHVU, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Giá dịch vụ</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GIADICHVU, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Thời gian thực hiện</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.THOIGIANTHUCHIEN, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Mô tả</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MOTA, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Hình ảnh</lable>
+            <div class="col-md-10">
+                <input type="file" name="fileImages" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-default" style="background-color: #06ba2f;color:white;" />
+            </div>
+        </div>
+    </div>
+</form>

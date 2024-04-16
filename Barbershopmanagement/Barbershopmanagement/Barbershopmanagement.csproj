@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLDichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLTaiKhoanController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
@@ -2315,6 +2316,9 @@
     <Content Include="Areas\Admin\Views\QLTaiKhoan\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QLTaiKhoan\TaoTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\QLTaiKhoan\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QLDichVu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QLDichVu\ThemDichVu.cshtml" />
+    <Content Include="Areas\Admin\Views\QLDichVu\Edit.cshtml" />
     <None Include="Content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.min.js" />

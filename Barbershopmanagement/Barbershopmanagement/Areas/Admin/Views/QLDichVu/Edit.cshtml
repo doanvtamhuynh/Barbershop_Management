@@ -1,0 +1,69 @@
+﻿@model Barbershopmanagement.Models.DICHVU
+
+@{
+    ViewBag.Title = "Chỉnh sửa";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Active = 1;
+}
+
+<div>
+    <h4 style="margin-left:40%;font-weight:bold">CHỈNH SỬA</h4>
+</div>
+<a href="~/Admin/QLDichVu" class="buy_continute mt-4"><i class="fa fa-arrow-circle-left"></i> Trở lại</a>
+
+@using (Html.BeginForm("SaveEdit", "QLDichVu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="product__details row services-details">
+        <div class="product__details-img col-lg-4 col-md-4 d-inline-flex">
+            <div class="big-img">
+                <img src="~/Content/images/serviceimg/@Model.URLHINHANH" style="visibility: visible;border:solid;">
+                <input type="file" name="fileImages" style="margin-top:5px" />
+
+            </div>
+        </div>
+        <div class="product__details-info col-lg-8 col-md-8">
+            <span class="control-label col-md-2" style="color: red; margin-left: 25%">
+                @TempData["editservice"]
+            </span>
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.DICHVUID)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tên dịch vụ</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TENDICHVU, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Giá dịch vụ</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.GIADICHVU, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Thời gian thực hiện</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.THOIGIANTHUCHIEN, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Mô tả</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MOTA, new { htmlAttributes = new { @class = "form-control", maxlength = "1000" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Lưu thay đổi" class="btn btn-default" style="background-color: #06ba2f;color:white;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

@@ -25,8 +25,20 @@
 
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
-                    <div class="info d-flex">
-                        <div class="d-block mr-2 text-white">admin</div>
+                    <div class="info d-flex">   
+                        @if (Session["user"] != null) {
+                            <div class="d-block mr-2 text-white">
+                                @{
+                                    Barbershopmanagement.Models.USER user = (Barbershopmanagement.Models.USER)Session["user"];
+                                }
+                                @user.HOTEN
+                            </div>
+                        }else{
+                            <div class="d-block mr-2 text-white">
+                                admin
+                            </div>   
+                        }
+                        
                         <form asp-controller="Security" asp-action="SignOut" method="post">
                             <button type="submit" style="margin-left: 10px; border:none; outline:none; background: white;">
                                 <span class="fas fa-sign-out-alt"></span>

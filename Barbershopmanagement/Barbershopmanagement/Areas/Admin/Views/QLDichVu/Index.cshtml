@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Barbershopmanagement.Models.DICHVU>
+
+@{
+    ViewBag.Title = "Quản lí dịch vụ";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Active = 1;
+}
+
+<style>
+    .qldichvu_create {
+        text-align: center;
+        width: 130px;
+        height: 30px;
+        background-color: #06ba2f;
+        border-radius: 10px;
+    }
+</style>
+<div>
+    <h4 style="margin-left:40%;font-weight:bold">QUẢN LÍ DỊCH VỤ</h4>
+</div>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                TÊN DỊCH VỤ
+            </th>
+            <th>
+                GIÁ DỊCH VỤ
+            </th>
+            <th>
+                THỜI GIAN THỰC HIỆN
+            </th>
+            <th>
+                MÔ TẢ
+            </th>
+            <th>
+                HÌNH ẢNH
+            </th>
+            <th>
+                <div class="qldichvu_create">
+                    <a href="~/Admin/QLDichVu/ThemDichVu" style="color:white;font-weight:bold;text-decoration:none">Thêm dịch vụ</a>
+                </div>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENDICHVU)
+                </td>
+                <td>
+                    @string.Format("{0:N0}", item.GIADICHVU)
+                    <span class="currencySymbol">₫</span>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.THOIGIANTHUCHIEN) phút
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MOTA)
+                </td>
+                <td>
+                    <img src="~/Content/images/serviceimg/@item.URLHINHANH" style="height:50px" />
+                </td>
+                <td style="display:inline-flex">
+                    <form action="~/Admin/QLDichVu/Edit" method="get">
+                        <button type="submit" value="@item.DICHVUID" name="id" class="qldichvu_create" style="width:100px;background-color:gray;color:white;font-weight:bold;border:none">
+                            Chỉnh sửa
+                        </button>
+                    </form>
+                    <form action="~/Admin/QLDichVu/Xoa" method="get">
+                        <button type="submit" value="@item.DICHVUID" name="id" class="qldichvu_create" style="width:50px;background-color:red;color:white;font-weight:bold;border:none;margin-left:5px">
+                            Xóa
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@if (TempData["addservice"] != null)
+{
+    <script>
+        alert("Thêm dịch vụ thành công");
+    </script>
+}
+
+@if (TempData["editservice"] != null)
+{
+    <script>
+        alert("Cập nhật dịch vụ thành công");
+    </script>
+}
