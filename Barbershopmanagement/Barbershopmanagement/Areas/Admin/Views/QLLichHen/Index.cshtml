@@ -1,0 +1,195 @@
+﻿@model IEnumerable<Barbershopmanagement.Models.DONHANG>
+
+@{
+    ViewBag.Title = "Quản lí đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+}
+
+<style>
+    .history {
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+    }
+
+    .styled-link {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        background-color: #808080;
+        border: solid;
+        border-color: #ffffff;
+        border-radius: 5px;
+        padding: 3px;
+        transition: color 0.3s ease;
+    }
+
+    .styled-link:hover {
+        color: #0056b3;
+    }
+
+    .modal__overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.1);
+    }
+
+    .modal__body {
+        width: 400px;
+        height: 500px;
+        background-color: white;
+        margin: auto;
+        margin-top: 5%;
+        position: relative;
+        z-index: 1;
+        border-radius: 10px;
+    }
+    
+    .modal__item{
+        width: 80%;
+        height: 70%;
+        margin-left: 10%;
+        margin-top:5%;
+        padding: 5px;
+    }
+    .modal_button{
+
+    }
+</style>
+<div>
+    <h4 style="margin-left:40%;font-weight:bold">QUẢN LÍ LỊCH HẸN</h4>
+</div>
+<div class="container history">
+    <table class="table">
+        <tr>
+            <th>
+                Người đặt lịch
+            </th>
+            <th>
+                Nhân viên
+            </th>
+            <th>
+                Thời gian đặt lịch
+            </th>
+            <th>
+                Tổng thời gian thực hiện
+            </th>
+            <th>
+                Tổng tiền thanh toán
+            </th>
+            <th>
+                Tình trang
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            int index = item.DONHANGID;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USER.HOTEN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NHANVIEN.USER.HOTEN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.THOIGIAN)
+                </td>
+                <td style="width:100px">
+                    @{
+                        List<Barbershopmanagement.Models.CHITIETDONHANG> chitietDH = db.CHITIETDONHANGs.Where(m => m.DONHANGID == item.DONHANGID).ToList();
+                        int time = 0;
+                        foreach (var j in chitietDH)
+                        {
+                            time += j.DICHVU.THOIGIANTHUCHIEN;
+                        }
+                        BarbershopManagement.Helpers.Helpers help = new BarbershopManagement.Helpers.Helpers();
+                        string tongThoiGian = help.tongThoiGian(time);
+                    }
+                    @tongThoiGian
+                </td>
+                <td>
+                    @{
+                        double total = 0;
+                        foreach (var i in chitietDH)
+                        {
+                            total += i.DICHVU.GIADICHVU;
+                        }
+
+                    }
+                    @string.Format("{0:N0}", total)
+                    <span class="currencySymbol">₫</span>
+                </td>
+                <td @*style="width:100px"*@>
+                    @if (item.TINHTRANGID == 2)
+                    {
+                        <span style="color:green">Đơn hàng đã được xác nhận.</span>
+                    }
+                    else if (item.TINHTRANGID == 1)
+                    {
+                        <span style="color:red">Đơn hàng chưa được xác nhận.</span>
+                    }
+                    else
+                    {
+                        <span style="color:green;">Đã hoàn thành</span>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.DONHANGID }, new { @class = "styled-link" })
+
+                </td>
+                @if (item.TINHTRANGID == 1)
+                {
+                    <td>
+                        @Html.ActionLink("Xác nhận", "Confirm", new { id = item.DONHANGID }, new { @class = "styled-link", style = "background-color: green;" })
+                    </td>
+                }
+                @if (item.TINHTRANGID == 1)
+                {
+                    <td>
+                        <button class="styled-link" id="showFormButton @index" style="background-color: red; border:none">Xóa</button>
+                        <form action="~/Admin/QLLichHen/Delete" class="modal" id="myForm @index" style="display: none;">
+                            <div class="modal__overlay" id="hideForm @index"></div>
+                            <div class="modal__body">
+                                <button id="hideFormButton @index" type="button" style="width:30px; border-radius:20px;border-color:white; margin-left: 90%; margin-top: 4px">X</button>
+                                <label style="margin-left: 45%; margin-top: 5px;">
+                                    LÝ DO
+                                </label>
+                                <input value="@item.DONHANGID" name="id" style="display:none"/>
+                                <textarea class="modal__item" placeholder=" Nhập lý do..." name="lydo"></textarea>
+                                <button type="submit" class = "styled-link", style = "background-color: red; margin-left:40%;">Xác nhận</button>
+                            </div>
+                        </form>
+                        <script>
+                            var showFormButton = document.getElementById("showFormButton @index");
+                            var hideForm = document.getElementById("hideForm @index");
+                            var hideFormButton = document.getElementById("hideFormButton @index");
+                            var myForm = document.getElementById("myForm @index");
+
+                            showFormButton.addEventListener("click", function () {
+                                myForm.style.display = "block";
+                            });
+
+                            hideFormButton.addEventListener("click", function () {
+                                myForm.style.display = "none";
+                            });
+
+                            hideForm.addEventListener("click", function () {
+                                myForm.style.display = "none";
+                            });
+                        </script>
+                    </td>
+                }
+                @if (item.TINHTRANGID == 2)
+                {
+                    <td>
+                        @Html.ActionLink("Hoàn thành", "Done", new { id = item.DONHANGID }, new { @class = "styled-link", style = "background-color: green;" })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>

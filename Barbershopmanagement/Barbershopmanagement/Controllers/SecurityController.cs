@@ -11,6 +11,7 @@ namespace BarbershopManagement.Controllers
 {
     public class SecurityController : Controller
     {
+        BarbershopManagementEntities db = new BarbershopManagementEntities();
 
         //Login
 
@@ -23,7 +24,6 @@ namespace BarbershopManagement.Controllers
         public ActionResult Login(string username, string password)
         {
 
-            BarbershopManagementEntities db = new BarbershopManagementEntities();
             var taiKhoan = db.USERS.SingleOrDefault(m => m.TENDANGNHAP == username && m.PASSWORD == password);
             if (taiKhoan != null)
             {
@@ -50,7 +50,6 @@ namespace BarbershopManagement.Controllers
 
             if (username.Length > 0 && password == confirmpassword && password.Length > 4 && hoten.Length > 0 && sodienthoai.Length == 10 && email != null)
             {
-                BarbershopManagementEntities db = new BarbershopManagementEntities();
                 var findUser = db.USERS.FirstOrDefault(m => m.TENDANGNHAP == username);
 
                 if (findUser == null)
@@ -97,7 +96,6 @@ namespace BarbershopManagement.Controllers
         public ActionResult ForgotPassword(string username, string email)
         {
 
-            BarbershopManagementEntities db = new BarbershopManagementEntities();
             var taiKhoan = db.USERS.FirstOrDefault(m => m.TENDANGNHAP == username && m.EMAIL == email);
             if (taiKhoan != null)
             {

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Barbershopmanagement.Models.CHITIETDONHANG>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .history-details {
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+    }
+</style>
+<div>
+    <h4 style="margin-left:40%;font-weight:bold">CHI TIẾT ĐƠN HÀNG</h4>
+</div>
+
+<div>
+    <hr />
+    <a href="~/Admin/QLLichHen/" class="btn btn-danger">Trở lại</a>
+    <div class="container history-details">
+        <table class="table">
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Tên dịch vụ
+                </th>
+                <th>
+                    Mô tả
+                </th>
+                <th>
+                    Thời gian thực hiện
+                </th>
+                <th>
+                    Giá tiền
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/Content/images/@item.DICHVU.URLHINHANH" style="width:50px" />
+                    </td>
+                    <td>
+                        @item.DICHVU.TENDICHVU
+                    </td>
+                    <td>
+                        @item.DICHVU.MOTA
+                    </td>
+                    <td>
+                        @item.DICHVU.THOIGIANTHUCHIEN phút
+                    </td>
+                    <td>
+                        @item.DICHVU.GIADICHVU
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

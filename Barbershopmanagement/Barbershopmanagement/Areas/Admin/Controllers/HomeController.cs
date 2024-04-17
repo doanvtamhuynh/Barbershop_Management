@@ -9,14 +9,13 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        
+        Helpers.Authorization auth = new Helpers.Authorization();
         // GET: Admin/Home
         public ActionResult Index()
         {
             if (Session["user"] != null)
             {
                 USER user = (USER)Session["user"];
-                Helpers.Authorization auth = new Helpers.Authorization();
                 if(auth.isAdmin(user.ROLE) == true)
                 {
                     return View();
@@ -26,7 +25,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                     return RedirectToAction("Index", "HomePage");
                 }
             }
-            return RedirectToAction("Login", "Security");
+            return Redirect("/Security/Login");
         }
     }
 }

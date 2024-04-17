@@ -24,6 +24,10 @@ namespace Barbershopmanagement.Controllers
 
         public ActionResult Delete(int id)
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Login", "Security");
+            }
             var model = db.DONHANGs.Find(id);
             db.DONHANGs.Remove(model);
             try

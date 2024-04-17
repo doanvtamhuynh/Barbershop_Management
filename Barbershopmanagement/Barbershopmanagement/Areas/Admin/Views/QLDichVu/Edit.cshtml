@@ -11,11 +11,11 @@
 </div>
 <a href="~/Admin/QLDichVu" class="buy_continute mt-4"><i class="fa fa-arrow-circle-left"></i> Trở lại</a>
 
-@using (Html.BeginForm("SaveEdit", "QLDichVu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("SaveEdit", "QLDichVu", FormMethod.Post, new { enctype = "multipart/form-data",style ="box-shadow: 0 3px 8px rgb(0 0 0 / 15%);border-radius: 10px;" }))
 {
     @Html.AntiForgeryToken()
     <div class="product__details row services-details">
-        <div class="product__details-img col-lg-4 col-md-4 d-inline-flex">
+        <div class="product__details-img col-lg-4 col-md-4 d-inline-flex" style="margin-left:20px">
             <div class="big-img">
                 <img src="~/Content/images/serviceimg/@Model.URLHINHANH" style="visibility: visible;border:solid;">
                 <input type="file" name="fileImages" style="margin-top:5px" />

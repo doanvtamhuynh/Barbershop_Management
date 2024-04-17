@@ -132,6 +132,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLDichVuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLLichHenController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLTaiKhoanController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
@@ -2320,6 +2321,8 @@
     <Content Include="Areas\Admin\Views\QLDichVu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QLDichVu\ThemDichVu.cshtml" />
     <Content Include="Areas\Admin\Views\QLDichVu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QLLichHen\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QLLichHen\Details.cshtml" />
     <None Include="Content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.min.js" />

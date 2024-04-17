@@ -11,12 +11,11 @@
 </div>
 <a href="~/Admin/QLTaiKhoan/" class="buy_continute mt-4"><i class="fa fa-arrow-circle-left"></i> Trở lại</a>
 
-@using (Html.BeginForm("TaoTaiKhoan", "QLTaiKhoan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("TaoTaiKhoan", "QLTaiKhoan", FormMethod.Post, new { enctype = "multipart/form-data", style ="box-shadow: 0 3px 8px rgb(0 0 0 / 15%); border-radius: 10px; padding:10px" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <hr />
         <span class="control-label col-md-2" style="color: red; margin-left: 25%">
             @TempData["addTaiKhoan"]
         </span>
