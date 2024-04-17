@@ -15,8 +15,6 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
         // GET: Admin/QLLichHen
         public ActionResult Index()
         {
-            List<DONHANG> dsDonHang = db.DONHANGs.ToList();
-            return View(dsDonHang);
             if (Session["user"] != null)
             {
                 USER user = (USER)Session["user"];
@@ -41,40 +39,79 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
 
         public ActionResult Confirm(int id)
         {
-            var comfirmModel = db.DONHANGs.Find(id);
-            comfirmModel.TINHTRANGID = 2;
-            try
+            if (Session["user"] != null)
             {
-                db.SaveChanges();
-            }catch (Exception ex) { }
-            return RedirectToAction("Index");
+                USER user = (USER)Session["user"];
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    var comfirmModel = db.DONHANGs.Find(id);
+                    comfirmModel.TINHTRANGID = 2;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex) { }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
+            }
+            return Redirect("/Security/Login");
+            
         }
 
         public ActionResult Delete(int id, string lydo)
         {
-            var model = db.DONHANGs.Find(id);
-            EmailService emailService = new EmailService();
-            emailService.SendEmail(model.USER.EMAIL, "HỦY ĐƠN HÀNG", "Lý do: " + lydo);
-            TempData["deleteDonHang"] = true;
-            db.DONHANGs.Remove(model);
-            try
+            if (Session["user"] != null)
             {
-                db.SaveChanges();
+                USER user = (USER)Session["user"];
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    var model = db.DONHANGs.Find(id);
+                    EmailService emailService = new EmailService();
+                    emailService.SendEmail(model.USER.EMAIL, "HỦY ĐƠN HÀNG", "Lý do: " + lydo);
+                    TempData["deleteDonHang"] = true;
+                    db.DONHANGs.Remove(model);
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception e) { }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
             }
-            catch (Exception e) { }
-            return RedirectToAction("Index");
+            return Redirect("/Security/Login");
         }
 
         public ActionResult Done(int id)
         {
-            var comfirmModel = db.DONHANGs.Find(id);
-            comfirmModel.TINHTRANGID = 3;
-            try
+            if (Session["user"] != null)
             {
-                db.SaveChanges();
+                USER user = (USER)Session["user"];
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    var comfirmModel = db.DONHANGs.Find(id);
+                    comfirmModel.TINHTRANGID = 3;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex) { }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
             }
-            catch (Exception ex) { }
-            return RedirectToAction("Index");
+            return Redirect("/Security/Login");
+            
         }
     }
 }
