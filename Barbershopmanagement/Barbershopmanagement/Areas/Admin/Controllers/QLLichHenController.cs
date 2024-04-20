@@ -20,7 +20,30 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                 USER user = (USER)Session["user"];
                 if (auth.isAdmin(user.ROLE) == true)
                 {
-                    List<DONHANG> dsDonhang = db.DONHANGs.ToList();
+                    List<DONHANG> dsDonhang = db.DONHANGs.OrderBy(m => m.TINHTRANGID).ToList();
+                    return View(dsDonhang);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
+            }
+            return Redirect("/Security/Login");
+        }
+
+        public ActionResult TimKiem(string tinhtrang)
+        {
+            if (Session["user"] != null)
+            {
+                USER user = (USER)Session["user"];
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    int tt = int.Parse(tinhtrang);
+                    if(tt == 0)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    List<DONHANG> dsDonhang = db.DONHANGs.Where(m => m.TINHTRANGID == tt).ToList();
                     return View(dsDonhang);
                 }
                 else

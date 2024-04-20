@@ -37,6 +37,10 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                 USER user = (USER)Session["user"];
                 if (auth.isAdmin(user.ROLE) == true)
                 {
+                    if(role == "all")
+                    {
+                        return RedirectToAction("Index");
+                    }
                     List<USER> dsTaiKhoan = db.USERS.Where(m => m.ROLE == role).ToList();
                     return View(dsTaiKhoan);
                 }
