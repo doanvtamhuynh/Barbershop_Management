@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Dashboard</title>
+    <title>Admin | @ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/css/adminlte.min.css">
     <link rel="stylesheet" href="~/Content/css/admin.css">
     <link rel="stylesheet" href="~/Content/bootstrap/bootstrap.min.css" />
@@ -117,23 +117,50 @@
                                 </a>
                             </li>
                         }
+                        @if (ViewBag.Active == 3)
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/QLLichHen" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Quản lí lịch hẹn
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/QLLichHen" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Quản lí lịch hẹn
+                                    </p>
+                                </a>
+                            </li>
+                        }
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link @*active*@">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Quản lí lịch hẹn
-                                </p>
-                            </a>
-                        </li>
 
                         <li class="nav-header">Thống kê</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Doanh thu</p>
-                            </a>
-                        </li>
+                        @if (ViewBag.Active == 4)
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/ThongKeDoanhThu" class="nav-link active">
+                                    <i class="nav-icon fas fa-file"></i>
+                                    <p>Doanh thu</p>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a href="~/Admin/ThongKeDoanhThu" class="nav-link">
+                                    <i class="nav-icon fas fa-file"></i>
+                                    <p>Doanh thu</p>
+                                </a>
+                            </li>
+                        }
+                        
 
 
                     </ul>

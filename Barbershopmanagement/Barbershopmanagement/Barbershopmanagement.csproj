@@ -134,6 +134,7 @@
     <Compile Include="Areas\Admin\Controllers\QLDichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLLichHenController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLTaiKhoanController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongKeDoanhThuController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
@@ -180,10 +181,22 @@
     <Compile Include="Models\DONHANG.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\getDonHangTheoNgay_Result.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GIOHANG.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NHANVIEN.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spDonHangTheoNam_Result.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spDonHangTheoNgay_Result.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spDonHangTheoThang_Result.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
@@ -2323,6 +2336,10 @@
     <Content Include="Areas\Admin\Views\QLDichVu\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\QLLichHen\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QLLichHen\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKeDoanhThu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKeDoanhThu\TimKiemDonHangTheoNgay.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKeDoanhThu\TimKiemDonHangTheoThang.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKeDoanhThu\TimKiemDonHangTheoNam.cshtml" />
     <None Include="Content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.min.js" />

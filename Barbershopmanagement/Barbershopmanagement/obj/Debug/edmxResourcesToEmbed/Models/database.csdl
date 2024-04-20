@@ -382,6 +382,19 @@
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
       <End Role="DONHANG" EntitySet="DONHANGs" />
     </AssociationSet>
+    <FunctionImport Name="getDonHangTheoNgay" ReturnType="Collection(BarbershopManagementModel.getDonHangTheoNgay_Result)">
+      <Parameter Name="thoigian" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spDonHangTheoNgay" ReturnType="Collection(BarbershopManagementModel.spDonHangTheoNgay_Result)">
+      <Parameter Name="thoigian" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spDonHangTheoNam" ReturnType="Collection(BarbershopManagementModel.spDonHangTheoNam_Result)">
+      <Parameter Name="Nam" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spDonHangTheoThang" ReturnType="Collection(BarbershopManagementModel.spDonHangTheoThang_Result)">
+      <Parameter Name="Thang" Mode="In" Type="String" />
+      <Parameter Name="Nam" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -406,4 +419,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="getDonHangTheoNgay_Result">
+    <Property Type="Int32" Name="DONHANGID" Nullable="false" />
+    <Property Type="Int32" Name="USERID" Nullable="false" />
+    <Property Type="Int32" Name="NHANVIENID" Nullable="false" />
+    <Property Type="DateTime" Name="THOIGIAN" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="TINHTRANGID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spDonHangTheoNgay_Result">
+    <Property Type="Int32" Name="DONHANGID" Nullable="false" />
+    <Property Type="Int32" Name="USERID" Nullable="false" />
+    <Property Type="Int32" Name="NHANVIENID" Nullable="false" />
+    <Property Type="DateTime" Name="THOIGIAN" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="TINHTRANGID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spDonHangTheoNam_Result">
+    <Property Type="Int32" Name="DONHANGID" Nullable="false" />
+    <Property Type="Int32" Name="USERID" Nullable="false" />
+    <Property Type="Int32" Name="NHANVIENID" Nullable="false" />
+    <Property Type="DateTime" Name="THOIGIAN" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="TINHTRANGID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spDonHangTheoThang_Result">
+    <Property Type="Int32" Name="DONHANGID" Nullable="false" />
+    <Property Type="Int32" Name="USERID" Nullable="false" />
+    <Property Type="Int32" Name="NHANVIENID" Nullable="false" />
+    <Property Type="DateTime" Name="THOIGIAN" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="TINHTRANGID" Nullable="false" />
+  </ComplexType>
 </Schema>

@@ -141,5 +141,45 @@ namespace Barbershopmanagement.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<getDonHangTheoNgay_Result> getDonHangTheoNgay(string thoigian)
+        {
+            var thoigianParameter = thoigian != null ?
+                new ObjectParameter("thoigian", thoigian) :
+                new ObjectParameter("thoigian", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getDonHangTheoNgay_Result>("getDonHangTheoNgay", thoigianParameter);
+        }
+    
+        public virtual ObjectResult<spDonHangTheoNgay_Result> spDonHangTheoNgay(string thoigian)
+        {
+            var thoigianParameter = thoigian != null ?
+                new ObjectParameter("thoigian", thoigian) :
+                new ObjectParameter("thoigian", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spDonHangTheoNgay_Result>("spDonHangTheoNgay", thoigianParameter);
+        }
+    
+        public virtual ObjectResult<spDonHangTheoNam_Result> spDonHangTheoNam(string nam)
+        {
+            var namParameter = nam != null ?
+                new ObjectParameter("Nam", nam) :
+                new ObjectParameter("Nam", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spDonHangTheoNam_Result>("spDonHangTheoNam", namParameter);
+        }
+    
+        public virtual ObjectResult<spDonHangTheoThang_Result> spDonHangTheoThang(string thang, string nam)
+        {
+            var thangParameter = thang != null ?
+                new ObjectParameter("Thang", thang) :
+                new ObjectParameter("Thang", typeof(string));
+    
+            var namParameter = nam != null ?
+                new ObjectParameter("Nam", nam) :
+                new ObjectParameter("Nam", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spDonHangTheoThang_Result>("spDonHangTheoThang", thangParameter, namParameter);
+        }
     }
 }

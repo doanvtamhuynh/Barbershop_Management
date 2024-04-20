@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\areas\\admin\\controllers\\qllichhencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\areas\\admin\\controllers\\qllichhencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\areas\\admin\\views\\qllichhen\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\areas\\admin\\views\\qllichhen\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\areas\\admin\\views\\thongkedoanhthu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\areas\\admin\\views\\thongkedoanhthu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "QLLichHenController.cs",
-              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Controllers\\QLLichHenController.cs",
-              "RelativeDocumentMoniker": "Barbershopmanagement\\Areas\\Admin\\Controllers\\QLLichHenController.cs",
-              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Controllers\\QLLichHenController.cs",
-              "RelativeToolTip": "Barbershopmanagement\\Areas\\Admin\\Controllers\\QLLichHenController.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAmwBEAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T06:32:14.288Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Views\\QLLichHen\\Index.cshtml",
+              "RelativeDocumentMoniker": "Barbershopmanagement\\Areas\\Admin\\Views\\QLLichHen\\Index.cshtml",
+              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Views\\QLLichHen\\Index.cshtml",
+              "RelativeToolTip": "Barbershopmanagement\\Areas\\Admin\\Views\\QLLichHen\\Index.cshtml",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAH0AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-20T12:45:46.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Views\\ThongKeDoanhThu\\Index.cshtml",
+              "RelativeDocumentMoniker": "Barbershopmanagement\\Areas\\Admin\\Views\\ThongKeDoanhThu\\Index.cshtml",
+              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Views\\ThongKeDoanhThu\\Index.cshtml",
+              "RelativeToolTip": "Barbershopmanagement\\Areas\\Admin\\Views\\ThongKeDoanhThu\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-20T12:43:52.376Z",
               "EditorCaption": ""
             }
           ]

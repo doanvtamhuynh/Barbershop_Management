@@ -1,0 +1,148 @@
+﻿@model IEnumerable<Barbershopmanagement.Models.spDonHangTheoNam_Result>
+
+@{
+    ViewBag.Title = "Doanh Thu";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Active = 4;
+    Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+}
+@{
+    var yyyy = ViewBag.selectYear.ToString();
+
+    string selectdateTime = yyyy;
+}
+<style>
+    .boder {
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+        padding: 10px;
+    }
+</style>
+
+<div>
+    <h4 style="margin-left:40%;font-weight:bold">THỐNG KÊ DOANH THU</h4>
+</div>
+
+<div class="boder" style="padding:16px">
+    <div style="width: 100%; height: 40px; display: inline-flex;justify-content:space-between">
+        <div id="myForm">
+            <form action="~/Admin/ThongKeDoanhThu/TimKiemDonHangTheoNam" class="d-inline-flex" style="width:300px">
+                <input type="number" id="dateInput" name="year" style="border-radius:8px;padding:4px" value="@selectdateTime" />
+                <button style="margin-left:5px;border-color: gray; border-radius:8px; background-color:gray;color:white;padding:4px;width:100px" type="submit">Tìm kiếm</button>
+            </form>
+        </div>
+        <div class="d-inline-flex">
+            <label style="width:100px;margin-left:5px">
+                Tìm kiếm theo:
+            </label>
+            <select style="border-radius:8px;padding:4px;" id="mySelect">
+                <option value="ngay" selected>
+                    Ngày
+                </option>
+                <option value="thang">
+                    Tháng
+                </option>
+                <option value="nam" selected>
+                    Năm
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <hr />
+    <div style="margin-top: 16px;">
+        <label style="color:green; margin-left: 45% ">DOANH THU NĂM </label>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    NGƯỜI ĐẶT LỊCH
+                </th>
+                <th>
+                    NHÂN VIÊN THỰC HIỆN
+                </th>
+                <th>
+                    TỔNG THANH TOÁN
+                </th>
+
+            </tr>
+            @{double totalDay = 0;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <th>
+                            @db.USERS.Find(item.USERID).HOTEN
+                        </th>
+                        <th>
+                            @db.NHANVIENs.Find(item.NHANVIENID).USER.HOTEN
+                        </th>
+                        <th>
+                            @{
+                                var chiTietDH = db.CHITIETDONHANGs.Where(m => m.DONHANGID == item.DONHANGID);
+                                double total = 0;
+                                foreach (var i in chiTietDH)
+                                {
+                                    total += i.DICHVU.GIADICHVU;
+                                }
+                                totalDay += total;
+                            }
+                            @string.Format("{0:N0}", total)đ
+                        </th>
+                    </tr>
+                }
+            }
+        </table>
+        <div>
+            <div>
+                <h5 style="font-weight:bold;margin-top:12px;color:red">TỔNG TIỀN: @string.Format("{0:N0}", totalDay)đ</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var today = new Date;
+
+    // Định dạng ngày thành chuỗi "YYYY-MM-DD"
+    var yyyy = today.getFullYear();
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var dd = String(today.getDate()).padStart(2, '0');
+    var currentDate = yyyy + '-' + mm + '-' + dd;
+</script>
+
+<script defer>
+    var mySelect = document.getElementById("mySelect");
+    mySelect.addEventListener("change", function () {
+        var selectedValue = mySelect.value;
+        if (selectedValue == "ngay") {
+            var myForm = document.getElementById("myForm");
+            myForm.innerHTML = ` <form action="/Admin/ThongKeDoanhThu/TimKiemDonHangTheoNgay" class="d-inline-flex" style="width:300px">
+                                    <input type="date" id="dateInput" name="datetime" style="border-radius:8px;padding:4px" />
+                                    <button style="margin-left:5px;border-color: gray; border-radius:8px; background-color:gray;color:white;padding:4px;width:100px" type="submit">Tìm kiếm</button>
+                                </form>
+                                `;
+            document.getElementById("dateInput").value = currentDate;
+        } else if (selectedValue == "thang") {
+
+            var myForm = document.getElementById("myForm");
+            myForm.innerHTML = `<form action="/Admin/ThongKeDoanhThu/TimKiemDonHangTheoThang" class="d-inline-flex"  style="width:300px">
+                                    <input type="month" style="border-radius:8px;padding:4px;" id="monthInput" name="month"/>
+                                    <button style="margin-left:5px;border-color: gray; border-radius:8px; background-color:gray;color:white;padding:4px;width:100px" type="submit">Tìm kiếm</button>
+                                </form>
+                                `;
+            var currentMonth = today.toISOString().slice(0, 7);
+            document.getElementById("monthInput").value = currentMonth;
+        }
+        else if (selectedValue == "nam") {
+            var myForm = document.getElementById("myForm");
+            myForm.innerHTML = `<form action="/Admin/ThongKeDoanhThu/TimKiemDonHangTheoNam" class="d-inline-flex" style="width:300px">
+                                    <input type="number" style="border-radius:8px;padding:4px;" id="yearInput" name="year" value="@selectdateTime"/>
+                                    <button style="margin-left:5px;border-color: gray; border-radius:8px; background-color:gray;color:white;padding:4px;width:100px" type="submit">Tìm kiếm</button>
+                                </form>
+                                `;
+            document.getElementById("yearInput").value = yyyy;
+        }
+    });
+</script>

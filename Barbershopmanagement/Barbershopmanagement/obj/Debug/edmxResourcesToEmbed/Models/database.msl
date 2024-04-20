@@ -136,5 +136,49 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BarbershopManagementModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BarbershopManagementModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="getDonHangTheoNgay" FunctionName="BarbershopManagementModel.Store.getDonHangTheoNgay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BarbershopManagementModel.getDonHangTheoNgay_Result">
+          <ScalarProperty Name="DONHANGID" ColumnName="DONHANGID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NHANVIENID" ColumnName="NHANVIENID" />
+          <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+          <ScalarProperty Name="TINHTRANGID" ColumnName="TINHTRANGID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spDonHangTheoNgay" FunctionName="BarbershopManagementModel.Store.spDonHangTheoNgay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BarbershopManagementModel.spDonHangTheoNgay_Result">
+          <ScalarProperty Name="DONHANGID" ColumnName="DONHANGID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NHANVIENID" ColumnName="NHANVIENID" />
+          <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+          <ScalarProperty Name="TINHTRANGID" ColumnName="TINHTRANGID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spDonHangTheoNam" FunctionName="BarbershopManagementModel.Store.spDonHangTheoNam">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BarbershopManagementModel.spDonHangTheoNam_Result">
+          <ScalarProperty Name="DONHANGID" ColumnName="DONHANGID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NHANVIENID" ColumnName="NHANVIENID" />
+          <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+          <ScalarProperty Name="TINHTRANGID" ColumnName="TINHTRANGID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spDonHangTheoThang" FunctionName="BarbershopManagementModel.Store.spDonHangTheoThang">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BarbershopManagementModel.spDonHangTheoThang_Result">
+          <ScalarProperty Name="DONHANGID" ColumnName="DONHANGID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NHANVIENID" ColumnName="NHANVIENID" />
+          <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+          <ScalarProperty Name="TINHTRANGID" ColumnName="TINHTRANGID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

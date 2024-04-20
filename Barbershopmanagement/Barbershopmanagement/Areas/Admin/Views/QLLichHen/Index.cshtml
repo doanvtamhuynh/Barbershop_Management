@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<Barbershopmanagement.Models.DONHANG>
 
 @{
-    ViewBag.Title = "Quản lí đơn hàng";
+    ViewBag.Title = "Quản lí lịch hẹn";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Active = 3;
     Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
 }
 
@@ -122,7 +123,7 @@
                     @string.Format("{0:N0}", total)
                     <span class="currencySymbol">₫</span>
                 </td>
-                <td @*style="width:100px"*@>
+                <td >
                     @if (item.TINHTRANGID == 2)
                     {
                         <span style="color:green">Đơn hàng đã được xác nhận.</span>
