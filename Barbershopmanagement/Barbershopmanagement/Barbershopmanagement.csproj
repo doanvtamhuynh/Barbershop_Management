@@ -2340,6 +2340,7 @@
     <Content Include="Areas\Admin\Views\ThongKeDoanhThu\TimKiemDonHangTheoNgay.cshtml" />
     <Content Include="Areas\Admin\Views\ThongKeDoanhThu\TimKiemDonHangTheoThang.cshtml" />
     <Content Include="Areas\Admin\Views\ThongKeDoanhThu\TimKiemDonHangTheoNam.cshtml" />
+    <Content Include="Areas\Admin\Views\QLTaiKhoan\TimKiem.cshtml" />
     <None Include="Content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.min.js" />

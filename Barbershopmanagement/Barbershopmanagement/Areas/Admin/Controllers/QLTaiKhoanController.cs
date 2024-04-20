@@ -30,6 +30,23 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
             return Redirect("/Security/Login");
         }
 
+        public ActionResult TimKiem(string role)
+        {
+            if (Session["user"] != null)
+            {
+                USER user = (USER)Session["user"];
+                if (auth.isAdmin(user.ROLE) == true)
+                {
+                    List<USER> dsTaiKhoan = db.USERS.Where(m => m.ROLE == role).ToList();
+                    return View(dsTaiKhoan);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "HomePage");
+                }
+            }
+            return Redirect("/Security/Login");
+        }
         public ActionResult TaoTaiKhoan()
         {
             if (Session["user"] != null)
@@ -204,5 +221,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+       
     }
 }
