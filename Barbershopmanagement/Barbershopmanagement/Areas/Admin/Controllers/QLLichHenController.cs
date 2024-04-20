@@ -1,4 +1,5 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using BarbershopManagement.Helpers;
 using System;
 using System.Collections.Generic;
@@ -8,50 +9,26 @@ using System.Web.Mvc;
 
 namespace Barbershopmanagement.Areas.Admin.Controllers
 {
+    [AdminAuthorize]
     public class QLLichHenController : Controller
     {
         BarbershopManagementEntities db = new BarbershopManagementEntities();
-        Helpers.Authorization auth = new Helpers.Authorization();
         // GET: Admin/QLLichHen
         public ActionResult Index()
         {
-            if (Session["user"] != null)
-            {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    List<DONHANG> dsDonhang = db.DONHANGs.OrderBy(m => m.TINHTRANGID).ToList();
-                    return View(dsDonhang);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
-            }
-            return Redirect("/Security/Login");
+            List<DONHANG> dsDonhang = db.DONHANGs.OrderBy(m => m.TINHTRANGID).ToList();
+            return View(dsDonhang);
         }
 
         public ActionResult TimKiem(string tinhtrang)
         {
-            if (Session["user"] != null)
+            int tt = int.Parse(tinhtrang);
+            if (tt == 0)
             {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    int tt = int.Parse(tinhtrang);
-                    if(tt == 0)
-                    {
-                        return RedirectToAction("Index");
-                    }
-                    List<DONHANG> dsDonhang = db.DONHANGs.Where(m => m.TINHTRANGID == tt).ToList();
-                    return View(dsDonhang);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
+                return RedirectToAction("Index");
             }
-            return Redirect("/Security/Login");
+            List<DONHANG> dsDonhang = db.DONHANGs.Where(m => m.TINHTRANGID == tt).ToList();
+            return View(dsDonhang);
         }
 
         public ActionResult Details(int id)
@@ -62,79 +39,42 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
 
         public ActionResult Confirm(int id)
         {
-            if (Session["user"] != null)
+            var comfirmModel = db.DONHANGs.Find(id);
+            comfirmModel.TINHTRANGID = 2;
+            try
             {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    var comfirmModel = db.DONHANGs.Find(id);
-                    comfirmModel.TINHTRANGID = 2;
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (Exception ex) { }
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
+                db.SaveChanges();
             }
-            return Redirect("/Security/Login");
-            
+            catch (Exception ex) { }
+            return RedirectToAction("Index");
+
         }
 
         public ActionResult Delete(int id, string lydo)
         {
-            if (Session["user"] != null)
+            var model = db.DONHANGs.Find(id);
+            EmailService emailService = new EmailService();
+            emailService.SendEmail(model.USER.EMAIL, "HỦY ĐƠN HÀNG", "Lý do: " + lydo);
+            TempData["deleteDonHang"] = true;
+            db.DONHANGs.Remove(model);
+            try
             {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    var model = db.DONHANGs.Find(id);
-                    EmailService emailService = new EmailService();
-                    emailService.SendEmail(model.USER.EMAIL, "HỦY ĐƠN HÀNG", "Lý do: " + lydo);
-                    TempData["deleteDonHang"] = true;
-                    db.DONHANGs.Remove(model);
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (Exception e) { }
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
+                db.SaveChanges();
             }
-            return Redirect("/Security/Login");
+            catch (Exception e) { }
+            return RedirectToAction("Index");
         }
 
         public ActionResult Done(int id)
         {
-            if (Session["user"] != null)
+            var comfirmModel = db.DONHANGs.Find(id);
+            comfirmModel.TINHTRANGID = 3;
+            try
             {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    var comfirmModel = db.DONHANGs.Find(id);
-                    comfirmModel.TINHTRANGID = 3;
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (Exception ex) { }
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
+                db.SaveChanges();
             }
-            return Redirect("/Security/Login");
-            
+            catch (Exception ex) { }
+            return RedirectToAction("Index");
         }
     }
 }

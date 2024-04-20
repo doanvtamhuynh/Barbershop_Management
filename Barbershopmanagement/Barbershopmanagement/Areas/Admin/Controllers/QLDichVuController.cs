@@ -1,4 +1,5 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,45 +9,22 @@ using System.Web.Mvc;
 
 namespace BarbershopManagement.Areas.Admin.Controllers
 {
+    [AdminAuthorize]
     public class QLDichVuController : Controller
     {
-        Barbershopmanagement.Helpers.Authorization auth = new Barbershopmanagement.Helpers.Authorization();
+
         // GET: Admin/QLDichVu
         BarbershopManagementEntities db = new BarbershopManagementEntities();
         public ActionResult Index()
         {
-            if (Session["user"] != null)
-            {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    List<DICHVU> dsDichVu = db.DICHVUs.ToList();
-                    return View(dsDichVu);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
-            }
-            return Redirect("/Security/Login");
+            List<DICHVU> dsDichVu = db.DICHVUs.ToList();
+            return View(dsDichVu);
 
         }
 
         public ActionResult ThemDichVu()
         {
-            if (Session["user"] != null)
-            {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    return View();
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
-            }
-            return Redirect("/Security/Login");
+            return View();
         }
 
         [HttpPost]
@@ -82,20 +60,8 @@ namespace BarbershopManagement.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            if (Session["user"] != null)
-            {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    var model = db.DICHVUs.Find(id);
-                    return View(model);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
-            }
-            return Redirect("/Security/Login");
+            var model = db.DICHVUs.Find(id);
+            return View(model);
         }
 
         [HttpPost]

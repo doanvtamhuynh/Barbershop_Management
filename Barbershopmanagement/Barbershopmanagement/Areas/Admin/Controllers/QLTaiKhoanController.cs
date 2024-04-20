@@ -1,4 +1,5 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,65 +8,29 @@ using System.Web.Mvc;
 
 namespace Barbershopmanagement.Areas.Admin.Controllers
 {
+    [AdminAuthorize]
     public class QLTaiKhoanController : Controller
     {
         BarbershopManagementEntities db = new BarbershopManagementEntities();
-        Helpers.Authorization auth = new Helpers.Authorization();
         // GET: Admin/QLTaiKhoan
         public ActionResult Index()
         {
-            if (Session["user"] != null)
-            {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    List<USER> dsTaiKhoan = db.USERS.ToList();
-                    return View(dsTaiKhoan);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
-            }
-            return Redirect("/Security/Login");
+            List<USER> dsTaiKhoan = db.USERS.ToList();
+            return View(dsTaiKhoan);
         }
 
         public ActionResult TimKiem(string role)
         {
-            if (Session["user"] != null)
+            if (role == "all")
             {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    if(role == "all")
-                    {
-                        return RedirectToAction("Index");
-                    }
-                    List<USER> dsTaiKhoan = db.USERS.Where(m => m.ROLE == role).ToList();
-                    return View(dsTaiKhoan);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
+                return RedirectToAction("Index");
             }
-            return Redirect("/Security/Login");
+            List<USER> dsTaiKhoan = db.USERS.Where(m => m.ROLE == role).ToList();
+            return View(dsTaiKhoan);
         }
         public ActionResult TaoTaiKhoan()
         {
-            if (Session["user"] != null)
-            {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    return View();
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
-            }
-            return Redirect("/Security/Login");
+            return View();
         }
 
         [HttpPost]
@@ -124,20 +89,8 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            if (Session["user"] != null)
-            {
-                USER user = (USER)Session["user"];
-                if (auth.isAdmin(user.ROLE) == true)
-                {
-                    var model = db.USERS.Find(id);
-                    return View(model);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
-            }
-            return Redirect("/Security/Login");
+            var model = db.USERS.Find(id);
+            return View(model);
         }
 
         [HttpPost]
