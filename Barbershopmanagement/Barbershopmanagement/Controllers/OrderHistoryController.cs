@@ -18,7 +18,7 @@ namespace Barbershopmanagement.Controllers
                 return RedirectToAction("Login", "Security");
             }
             var user = (USER)Session["user"];
-            List<DONHANG> dsDonHang = db.DONHANGs.Where(m => m.USERID == user.USERID).ToList();
+            List<DONHANG> dsDonHang = db.DONHANGs.Where(m => m.USERID == user.USERID).OrderBy(m => m.TINHTRANGID).ToList();
             return View(dsDonHang);
         }
 

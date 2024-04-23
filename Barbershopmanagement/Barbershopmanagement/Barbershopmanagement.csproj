@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\LichLamViecController.cs" />
     <Compile Include="Controllers\OrderHistoryController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
@@ -2493,6 +2494,11 @@
     <Content Include="Views\Profile\EditProfile.cshtml" />
     <Content Include="Views\OrderHistory\History.cshtml" />
     <Content Include="Views\OrderHistory\Details.cshtml" />
+    <Content Include="Views\LichLamViec\Index.cshtml" />
+    <Content Include="Views\LichLamViec\Details.cshtml" />
+    <Content Include="Views\LichLamViec\TimKiemTheoNgay.cshtml" />
+    <Content Include="Views\LichLamViec\TimKiemTheoThang.cshtml" />
+    <Content Include="Views\LichLamViec\TimKiemTheoNam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
