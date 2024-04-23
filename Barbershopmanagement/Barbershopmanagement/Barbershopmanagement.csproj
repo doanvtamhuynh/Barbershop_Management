@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLBinhLuanController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLDichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLLichHenController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLTaiKhoanController.cs" />
@@ -2342,6 +2343,10 @@
     <Content Include="Areas\Admin\Views\ThongKeDoanhThu\TimKiemDonHangTheoNam.cshtml" />
     <Content Include="Areas\Admin\Views\QLTaiKhoan\TimKiem.cshtml" />
     <Content Include="Areas\Admin\Views\QLLichHen\TimKiem.cshtml" />
+    <Content Include="Areas\Admin\Views\QLBinhLuan\BLDichVu.cshtml" />
+    <Content Include="Areas\Admin\Views\QLBinhLuan\TimBLDichVu.cshtml" />
+    <Content Include="Areas\Admin\Views\QLBinhLuan\BLNhanVien.cshtml" />
+    <Content Include="Areas\Admin\Views\QLBinhLuan\TimBLNhanVien.cshtml" />
     <None Include="Content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.js" />
     <Content Include="Content\Scripts\jquery-3.4.1.min.js" />

@@ -25,22 +25,25 @@
 
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
-                    <div class="info d-flex">   
-                        @if (Session["user"] != null) {
+                    <div class="info d-flex">
+                        @if (Session["user"] != null)
+                        {
                             <div class="d-block mr-2 text-white">
                                 @{
                                     Barbershopmanagement.Models.USER user = (Barbershopmanagement.Models.USER)Session["user"];
                                 }
                                 @user.HOTEN
                             </div>
-                        }else{
+                        }
+                        else
+                        {
                             <div class="d-block mr-2 text-white">
                                 admin
-                            </div>   
+                            </div>
                         }
-                            <a href="~/HomePage/" style="margin-left: 10px; border:none; outline:none; background: white;">
-                                <span class="fas fa-sign-out-alt" style="color:black"></span>
-                            </a>
+                        <a href="~/HomePage/" style="margin-left: 10px; border:none; outline:none; background: white;">
+                            <span class="fas fa-sign-out-alt" style="color:black"></span>
+                        </a>
                     </div>
                 </div>
 
@@ -141,6 +144,57 @@
                         }
 
 
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="QLBinhLuan">
+                                <i class="fa-solid fa-list nav-icon"></i>
+                                <p>
+                                    Quản lí bình luận
+                                    <i class="fas fa-angle-left right" id="QLBinhLuan-icon1"></i>
+                                </p>
+                            </a>
+                            <ul class="nav" id="QLBinhLuan-Item" style="display:none">
+                                @if (ViewBag.Active == 5)
+                                {
+                                    <li class="nav-item">
+                                        <a href="~/Admin/QLBinhLuan/BLDichVu" class="nav-link active">
+                                            <i class="fa-solid fa-circle nav-icon"></i>
+                                            <p>Bình luận Dịch Vụ</p>
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a href="~/Admin/QLBinhLuan/BLDichVu" class="nav-link ">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Bình luận Dịch Vụ</p>
+                                        </a>
+                                    </li>
+                                }
+                                
+
+                                <li class="nav-item">
+                                    @if (ViewBag.Active == 6)
+                                    {
+                                    <li class="nav-item">
+                                        <a href="~/Admin/QLBinhLuan/BLNhanVien" class="nav-link active">
+                                            <i class="fa-solid fa-circle nav-icon"></i>
+                                            <p>Bình luận Nhân Viên</p>
+                                        </a>
+                                    </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item">
+                                            <a href="~/Admin/QLBinhLuan/BLNhanVien" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Bình luận Nhân Viên</p>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                        </li>
+
                         <li class="nav-header">Thống kê</li>
                         @if (ViewBag.Active == 4)
                         {
@@ -160,7 +214,7 @@
                                 </a>
                             </li>
                         }
-                        
+
 
 
                     </ul>
@@ -174,5 +228,21 @@
 
         </div>
     </div>
+    <script>
+        var QLBinhLuan_btn = document.getElementById("QLBinhLuan");
+        var QLBinhLuan_Item = document.getElementById("QLBinhLuan-Item");
+        var QLBinhLuan_icon1 = document.getElementById("QLBinhLuan-icon1");
+        var QLBinhLuan_icon2 = document.getElementById("QLBinhLuan-icon2");
+        QLBinhLuan_btn.addEventListener("click", function () {
+            if (QLBinhLuan_Item.style.display == "block") {
+                QLBinhLuan_Item.style.display = "none";
+                QLBinhLuan_icon1.className = "fas fa-angle-left right";
+            } else {
+                QLBinhLuan_Item.style.display = "block";
+                QLBinhLuan_icon1.className = "fas fa-angle-down right";
+                
+            }
+        });
+    </script>
 </body>
 </html>
