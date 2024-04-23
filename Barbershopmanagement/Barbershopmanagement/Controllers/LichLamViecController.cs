@@ -1,4 +1,5 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Barbershopmanagement.Controllers
 {
+    [StaffAuthorize]
     public class LichLamViecController : Controller
     {
         BarbershopManagementEntities db = new BarbershopManagementEntities();

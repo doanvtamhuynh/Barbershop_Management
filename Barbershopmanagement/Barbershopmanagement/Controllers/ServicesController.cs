@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Barbershopmanagement.App_Start;
 
 namespace BarbershopManagement.Controllers
 {
@@ -33,13 +34,10 @@ namespace BarbershopManagement.Controllers
             return View(model);
         }
 
+        [Logged]
         [HttpPost]
         public ActionResult AddServiceToCart(int id)
         {
-            if (Session["user"] == null)
-            {
-                return RedirectToAction("Login", "Security");
-            }
             var user = (USER)Session["user"];
             var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
 
@@ -78,14 +76,10 @@ namespace BarbershopManagement.Controllers
             }
         }
 
+        [Logged]
         [HttpPost]
         public ActionResult Comment(string comment, int id)
         {
-
-            if (Session["user"] == null)
-            {
-                return RedirectToAction("Login", "Security");
-            }
             var user = (USER)Session["user"];
             var dongHang = db.CHITIETDONHANGs.Where(m => m.DICHVUID == id && m.DONHANG.USERID == user.USERID && m.DONHANG.TINHTRANGID == 3).FirstOrDefault();
             if (dongHang != null)

@@ -1,4 +1,5 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,13 @@ using System.Web.Mvc;
 
 namespace BarbershopManagement.Controllers
 {
+    [Logged]
     public class CartController : Controller
     {
         BarbershopManagementEntities db = new BarbershopManagementEntities();
         // GET: Cart
         public ActionResult Cart()
         {
-            if (Session["user"] == null)
-            {
-                return RedirectToAction("Login", "Security");
-            }
             var user = (USER)Session["user"];
             var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
             if (gioHang == null)

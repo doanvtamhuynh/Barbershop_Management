@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\controllers\\lichlamvieccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\controllers\\lichlamvieccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\views\\lichlamviec\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\views\\lichlamviec\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\areas\\admin\\controllers\\qlbinhluancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\areas\\admin\\controllers\\qlbinhluancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\Index.cshtml",
-              "RelativeDocumentMoniker": "Barbershopmanagement\\Views\\LichLamViec\\Index.cshtml",
-              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\Index.cshtml",
-              "RelativeToolTip": "Barbershopmanagement\\Views\\LichLamViec\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHQAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-23T11:35:26.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LichLamViecController.cs",
-              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Controllers\\LichLamViecController.cs",
-              "RelativeDocumentMoniker": "Barbershopmanagement\\Controllers\\LichLamViecController.cs",
-              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Controllers\\LichLamViecController.cs",
-              "RelativeToolTip": "Barbershopmanagement\\Controllers\\LichLamViecController.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAowEIAAABTAAAA",
+              "Title": "QLBinhLuanController.cs",
+              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Controllers\\QLBinhLuanController.cs",
+              "RelativeDocumentMoniker": "Barbershopmanagement\\Areas\\Admin\\Controllers\\QLBinhLuanController.cs",
+              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Controllers\\QLBinhLuanController.cs",
+              "RelativeToolTip": "Barbershopmanagement\\Areas\\Admin\\Controllers\\QLBinhLuanController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T10:48:50.289Z",
+              "WhenOpened": "2024-04-23T12:26:56.34Z",
               "EditorCaption": ""
             }
           ]

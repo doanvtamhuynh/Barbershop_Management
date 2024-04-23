@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Barbershopmanagement.App_Start;
 
 namespace BarbershopManagement.Controllers
 {
@@ -23,6 +24,8 @@ namespace BarbershopManagement.Controllers
             return View(model);
         }
 
+
+        [Logged]
         [HttpPost]
         public ActionResult Comment(string comment, int id)
         {

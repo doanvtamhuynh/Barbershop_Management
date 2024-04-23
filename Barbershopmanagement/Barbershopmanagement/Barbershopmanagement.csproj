@@ -129,7 +129,9 @@
     <Compile Include="App_Start\AdminAuthorize.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\Logged.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\StaffAuthorize.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLBinhLuanController.cs" />
@@ -2313,7 +2315,6 @@
     <Content Include="Content\fontawesome-free-6.5.1-web\svgs\solid\yen-sign.svg" />
     <Content Include="Content\fontawesome-free-6.5.1-web\svgs\solid\yin-yang.svg" />
     <Content Include="Content\fontawesome-free-6.5.1-web\svgs\solid\z.svg" />
-    <Content Include="Content\images\avatar1123123.jpg" />
     <Content Include="Content\images\avatar\default-avatar.jpg" />
     <Content Include="Content\images\empty_cart.png" />
     <Content Include="Content\images\footerlogo.jpg" />

@@ -1,4 +1,5 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,27 +8,20 @@ using System.Web.Mvc;
 
 namespace BarbershopManagement.Controllers
 {
+    [Logged]
     public class ProfileController : Controller
     {
         BarbershopManagementEntities db = new BarbershopManagementEntities();
         public ActionResult Profile()
         {
-            if (Session["user"] != null)
-            {
                 USER model = (USER)Session["user"];
                 return View(model);
-            }
-            return RedirectToAction("Login", "Security");
         }
 
         public ActionResult EditProfile()
         {
-            if (Session["user"] != null)
-            {
-                USER model = (USER)Session["user"];
-                return View(model);
-            }
-            return RedirectToAction("Login", "Security");
+            USER model = (USER)Session["user"];
+            return View(model);
         }
 
         [HttpPost]
@@ -45,7 +39,7 @@ namespace BarbershopManagement.Controllers
                     {
                         if (fileImages != null && fileImages.ContentLength > 0)
                         {
-                            string rootFolder = Server.MapPath("/Content/images/avarta/");
+                            string rootFolder = Server.MapPath("/Content/images/avatar/");
                             string pathImg = rootFolder + fileImages.FileName;
                             fileImages.SaveAs(pathImg);
                             updateModel.URLHINHANH = fileImages.FileName;
@@ -74,7 +68,7 @@ namespace BarbershopManagement.Controllers
                     TempData["EditProfile"] = null;
                     if (fileImages != null && fileImages.ContentLength > 0)
                     {
-                        string rootFolder = Server.MapPath("/Content/images/avarta/");
+                        string rootFolder = Server.MapPath("/Content/images/avatar/");
                         string pathImg = rootFolder + fileImages.FileName;
                         fileImages.SaveAs(pathImg);
                         updateModel.URLHINHANH = fileImages.FileName;
