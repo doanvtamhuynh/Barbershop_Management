@@ -1,9 +1,166 @@
-﻿
+﻿@model IEnumerable<Barbershopmanagement.Models.DICHVU>
 @{
-    ViewBag.Title = "Admin";
+    ViewBag.Title = "Home";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Active = 0;
 }
 
-<h2>Index</h2>
+<div class="col-lg-12 padding-10">
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>@String.Format("{0:N0}", @ViewBag.DoanhThu) ₫</h3>
+                        <p>Doanh Thu Trong Ngày</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-social-usd-outline"></i>
+                    </div>
+                    <a href="~/Admin/ThongKeDoanhThu" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>@ViewBag.ThongKeDonHang</h3>
+
+                        <p>Đơn Hàng Mới</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-android-cart"></i>
+                    </div>
+                    <form action="~/Admin/QLLichHen/TimKiem" class="small-box-footer">
+                        <button type="submit" value="1" name="tinhtrang" style="border:none;background-color:rgba(0,0,0,0);color:white">
+                            More info
+                            <i class="fas fa-arrow-circle-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-secondary">
+                    <div class="inner">
+                        <h3>@ViewBag.ThongKeDonHangChuaHT</h3>
+
+                        <p>Đơn Hàng Chưa Hoàn Thành</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-eye"></i>
+                    </div>
+                    <form action="~/Admin/QLLichHen/TimKiem" class="small-box-footer">
+                        <button type="submit" value="2" name="tinhtrang" style="border:none;background-color:rgba(0,0,0,0);color:white">
+                            More info
+                            <i class="fas fa-arrow-circle-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>@ViewBag.ThongKeKH</h3>
+
+                        <p>Khách Hàng</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-ios-people"></i>
+                    </div>
+                    <form action="~/Admin/QLTaiKhoan/TimKiem" class="small-box-footer">
+                        <button type="submit" value="khachhang" name="role" style="border:none;background-color:rgba(0,0,0,0);color:white">
+                            More info
+                            <i class="fas fa-arrow-circle-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <p>
+        <a href="~/Admin/QLDichVu/ThemDichVu" class="btn btn-primary">Thêm dịch vụ</a>
+    </p>
+
+    <form action="~/Admin/Home">
+        <b class="pr-2">Tìm kiếm theo tên</b>
+
+        <div class="d-flex align-items-center">
+            <input id="search" name="search" type="text" class="form-control mr-1">
+            <button type="submit" class="btn btn-danger">
+                Search
+            </button>
+        </div>
+    </form>
+
+    <div class="body fix-width scroll-inner" style="width: 100%; margin-top:4px">
+        <table class="table">
+            <tr>
+                <th>
+                    TÊN DỊCH VỤ
+                </th>
+                <th>
+                    GIÁ DỊCH VỤ
+                </th>
+                <th>
+                    THỜI GIAN THỰC HIỆN
+                </th>
+                <th>
+                    MÔ TẢ
+                </th>
+                <th>
+                    HÌNH ẢNH
+                </th>
+                <th>
+                    <div class="qldichvu_create">
+                        <a href="~/Admin/QLDichVu/ThemDichVu" style="color:white;font-weight:bold;text-decoration:none">Thêm dịch vụ</a>
+                    </div>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENDICHVU)
+                    </td>
+                    <td>
+                        @string.Format("{0:N0}", item.GIADICHVU)
+                        <span class="currencySymbol">₫</span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.THOIGIANTHUCHIEN) phút
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MOTA)
+                    </td>
+                    <td>
+                        <img src="~/Content/images/serviceimg/@item.URLHINHANH" style="height:50px" />
+                    </td>
+                    <td style="display:inline-flex">
+                        <form action="~/Admin/QLDichVu/Edit" method="get">
+                            <button type="submit" value="@item.DICHVUID" name="id" class="qldichvu_create" style="width: 100px; background-color: gray; color: white; font-weight: bold; border-color: gray; border-radius: 8px;">
+                                Chỉnh sửa
+                            </button>
+                        </form>
+                        <form action="~/Admin/QLDichVu/Xoa" method="get">
+                            <button type="submit" value="@item.DICHVUID" name="id" class="qldichvu_create" style="width:50px;background-color:red;color:white;font-weight:bold;border-color:red;border-radius:8px;margin-left:5px">
+                                Xóa
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
 
