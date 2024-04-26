@@ -17,6 +17,7 @@ namespace Barbershopmanagement.Models
         public int CHITIETDONHANGID { get; set; }
         public int DONHANGID { get; set; }
         public int DICHVUID { get; set; }
+        public double GIADICHVUTHOIDIEMDATLICH { get; set; }
     
         public virtual DICHVU DICHVU { get; set; }
         public virtual DONHANG DONHANG { get; set; }

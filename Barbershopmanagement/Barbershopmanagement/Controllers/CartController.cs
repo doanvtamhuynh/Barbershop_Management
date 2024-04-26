@@ -71,6 +71,7 @@ namespace BarbershopManagement.Controllers
                 CHITIETDONHANG chitietDH = new CHITIETDONHANG();
                 chitietDH.DONHANGID = donHang.DONHANGID;
                 chitietDH.DICHVUID = item.DICHVUID;
+                chitietDH.GIADICHVUTHOIDIEMDATLICH = item.DICHVU.GIADICHVU;
                 db.CHITIETDONHANGs.Add(chitietDH);
                 db.CHITIETGIOHANGs.Remove(item);
             }

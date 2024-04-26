@@ -12,6 +12,7 @@
           <Property Name="CHITIETDONHANGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DONHANGID" Type="int" Nullable="false" />
           <Property Name="DICHVUID" Type="int" Nullable="false" />
+          <Property Name="GIADICHVUTHOIDIEMDATLICH" Type="float" />
         </EntityType>
         <EntityType Name="CHITIETGIOHANG">
           <Key>
@@ -162,7 +163,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_COMMENT_NHANVIEN_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="COMMENT_NHANVIEN" Type="Self.COMMENT_NHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NHANVIEN">
@@ -174,7 +177,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_COMMENT_NHANVIEN_USERS">
-          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="COMMENT_NHANVIEN" Type="Self.COMMENT_NHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
@@ -214,9 +219,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DONHANG_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NHANVIEN">
@@ -401,6 +404,7 @@
           <Property Name="DICHVUID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DICHVU" Relationship="Self.FK_CHITIETDONHANG_DICHVU" FromRole="CHITIETDONHANG" ToRole="DICHVU" />
           <NavigationProperty Name="DONHANG" Relationship="Self.FK_CHITIETDONHANG_DONHANG" FromRole="CHITIETDONHANG" ToRole="DONHANG" />
+          <Property Name="GIADICHVUTHOIDIEMDATLICH" Type="Double" />
         </EntityType>
         <EntityType Name="CHITIETGIOHANG">
           <Key>
@@ -781,7 +785,7 @@
           <Parameter Name="thoigian" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spDonHangTheoNam" ReturnType="Collection(BarbershopManagementModel.spDonHangTheoNam_Result)">
-            <Parameter Name="Nam" Mode="In" Type="String" />
+          <Parameter Name="Nam" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spDonHangTheoThang" ReturnType="Collection(BarbershopManagementModel.spDonHangTheoThang_Result)">
             <Parameter Name="Thang" Mode="In" Type="String" />
@@ -848,6 +852,7 @@
           <EntitySetMapping Name="CHITIETDONHANGs">
             <EntityTypeMapping TypeName="BarbershopManagementModel.CHITIETDONHANG">
               <MappingFragment StoreEntitySet="CHITIETDONHANG">
+                <ScalarProperty Name="GIADICHVUTHOIDIEMDATLICH" ColumnName="GIADICHVUTHOIDIEMDATLICH" />
                 <ScalarProperty Name="CHITIETDONHANGID" ColumnName="CHITIETDONHANGID" />
                 <ScalarProperty Name="DONHANGID" ColumnName="DONHANGID" />
                 <ScalarProperty Name="DICHVUID" ColumnName="DICHVUID" />
