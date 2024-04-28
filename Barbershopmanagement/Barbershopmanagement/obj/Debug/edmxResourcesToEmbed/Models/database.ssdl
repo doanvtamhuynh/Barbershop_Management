@@ -7,6 +7,7 @@
     <Property Name="CHITIETDONHANGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DONHANGID" Type="int" Nullable="false" />
     <Property Name="DICHVUID" Type="int" Nullable="false" />
+    <Property Name="GIADICHVUTHOIDIEMDATLICH" Type="float" />
   </EntityType>
   <EntityType Name="CHITIETGIOHANG">
     <Key>
@@ -157,7 +158,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENT_NHANVIEN_NHANVIEN">
-    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="COMMENT_NHANVIEN" Type="Self.COMMENT_NHANVIEN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NHANVIEN">
@@ -169,7 +172,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENT_NHANVIEN_USERS">
-    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="COMMENT_NHANVIEN" Type="Self.COMMENT_NHANVIEN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="USERS">
@@ -209,9 +214,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DONHANG_NHANVIEN">
-    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NHANVIEN">

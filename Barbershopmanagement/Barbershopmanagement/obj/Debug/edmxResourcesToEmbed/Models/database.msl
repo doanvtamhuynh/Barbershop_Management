@@ -4,6 +4,7 @@
     <EntitySetMapping Name="CHITIETDONHANGs">
       <EntityTypeMapping TypeName="BarbershopManagementModel.CHITIETDONHANG">
         <MappingFragment StoreEntitySet="CHITIETDONHANG">
+          <ScalarProperty Name="GIADICHVUTHOIDIEMDATLICH" ColumnName="GIADICHVUTHOIDIEMDATLICH" />
           <ScalarProperty Name="CHITIETDONHANGID" ColumnName="CHITIETDONHANGID" />
           <ScalarProperty Name="DONHANGID" ColumnName="DONHANGID" />
           <ScalarProperty Name="DICHVUID" ColumnName="DICHVUID" />

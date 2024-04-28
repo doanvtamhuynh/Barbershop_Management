@@ -9,6 +9,7 @@
     <Property Name="DICHVUID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="DICHVU" Relationship="Self.FK_CHITIETDONHANG_DICHVU" FromRole="CHITIETDONHANG" ToRole="DICHVU" />
     <NavigationProperty Name="DONHANG" Relationship="Self.FK_CHITIETDONHANG_DONHANG" FromRole="CHITIETDONHANG" ToRole="DONHANG" />
+    <Property Name="GIADICHVUTHOIDIEMDATLICH" Type="Double" />
   </EntityType>
   <EntityType Name="CHITIETGIOHANG">
     <Key>
