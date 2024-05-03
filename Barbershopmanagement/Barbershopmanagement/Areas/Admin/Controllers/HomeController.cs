@@ -12,7 +12,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         BarbershopManagementEntities db = new BarbershopManagementEntities();
-        public ActionResult Index(string search)
+        public ActionResult Index()
         {
             DateTime datetime = DateTime.Now;
             var dsDonHang = db.DONHANGs.Where(m => m.THOIGIAN.Value.Day == datetime.Day
@@ -43,16 +43,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                                                  ).Count();
             ViewBag.DoanhThu = doanhThu;
             ViewBag.ThongKeDonHang = dsDonHangMoi;
-            var dsDichVu = new List<DICHVU>();
-            if (search == null || search == "")
-            {
-                dsDichVu = db.DICHVUs.ToList();
-            }
-            else
-            {
-                dsDichVu = db.DICHVUs.Where(m => m.TENDICHVU.ToLower().Contains(search.ToLower())).ToList();
-            }
-            return View(dsDichVu);
+            return View();
         }
 
     }

@@ -396,6 +396,8 @@
       <Parameter Name="Thang" Mode="In" Type="String" />
       <Parameter Name="Nam" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="getTopServicesInMonth" ReturnType="Collection(BarbershopManagementModel.getTopServicesInMonth_Result)" />
+    <FunctionImport Name="getTopStaffInMonth" ReturnType="Collection(BarbershopManagementModel.getTopStaffInMonth_Result)" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -447,5 +449,13 @@
     <Property Type="Int32" Name="NHANVIENID" Nullable="false" />
     <Property Type="DateTime" Name="THOIGIAN" Nullable="true" Precision="23" />
     <Property Type="Int32" Name="TINHTRANGID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="getTopServicesInMonth_Result">
+    <Property Type="Int32" Name="DICHVUID" Nullable="false" />
+    <Property Type="Int32" Name="UsageCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getTopStaffInMonth_Result">
+    <Property Type="Int32" Name="NHANVIENID" Nullable="false" />
+    <Property Type="Int32" Name="UsageCount" Nullable="true" />
   </ComplexType>
 </Schema>

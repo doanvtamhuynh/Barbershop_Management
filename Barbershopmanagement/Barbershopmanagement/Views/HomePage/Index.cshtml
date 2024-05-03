@@ -2,9 +2,14 @@
 @{
     ViewBag.Title = "Trang Chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
-    var dsDichVu = db.DICHVUs.Take(6).ToList();
-    var dsNhanVien = db.NHANVIENs.Take(6).ToList();
+    List<Barbershopmanagement.Models.DICHVU> dsDichVu = new List<Barbershopmanagement.Models.DICHVU>();
+    List<Barbershopmanagement.Models.NHANVIEN> dsNhanVien = new List<Barbershopmanagement.Models.NHANVIEN>();
+    try {
+        Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+        dsDichVu = db.DICHVUs.Take(3).ToList();
+        dsNhanVien = db.NHANVIENs.Take(3).ToList();
+    }catch(Exception e){}
+
 }
 
 <div class="container"
@@ -17,8 +22,6 @@
       ">
     <h2 style="display: flex; justify-content: center">DỊCH VỤ</h2>
     <div>
-        @if (dsDichVu.Count <= 3)
-        {
             <div class="top"
                  style="display: flex; justify-content: center; gap: 40px">
                 @for (int i = 0; i < dsDichVu.Count; i++)
@@ -36,52 +39,10 @@
                     
                 }
             </div>
-        }
-        else
-        {
-            <div class="top"
-                 style="display: flex; justify-content: center; gap: 40px">
-                @{
-                    for (int i = 0; i < 3; i++)
-                    {
-                                <form action="~/Services/Details">
-                                    <button type="submit" style="border-color:black;border-radius:4px;width:200px; margin:20px;background-color:rgba(0,0,0,0)" value="@dsDichVu[i].DICHVUID" name="id">
-                                        <img src="~/Content/images/serviceimg/@dsDichVu[i].URLHINHANH" style="width: 180px" height="200px" />
-                                        <hr />
-                                        <h4 style="width:200px">@dsDichVu[i].TENDICHVU</h4>
-                                        <div style="width: 200px; overflow-wrap: break-word;padding:4px">
-                                            @dsDichVu[i].MOTA chỉ với @string.Format("{0:N0}", dsDichVu[i].GIADICHVU) VND
-                                        </div>
-                                    </button>
-                                </form>
-                                
-                    }
-                }
-            </div>
-            <div class="bot"
-                 style="display: flex; justify-content: center; gap: 40px">
-                @for (int i = 3; i < dsDichVu.Count; i++)
-                {
-                    <form action="~/Services/Details">
-                        <button type="submit" style="border-color:black;border-radius:4px;width:200px; margin:20px;background-color:rgba(0,0,0,0)" value="@dsDichVu[i].DICHVUID" name="id">
-                            <img src="~/Content/images/serviceimg/@dsDichVu[i].URLHINHANH" style="width: 180px" height="200px" />
-                            <hr />
-                            <h4 style="width:200px">@dsDichVu[i].TENDICHVU</h4>
-                            <div style="width: 200px; overflow-wrap: break-word;padding:4px">
-                                @dsDichVu[i].MOTA chỉ với @string.Format("{0:N0}", dsDichVu[i].GIADICHVU) VND
-                            </div>
-                        </button>
-                    </form>
-                }
-            </div>
-
-                    }
     </div>
     <hr />
     <h2 style="display: flex; justify-content: center;  ">NHÂN VIÊN</h2>
     <div>
-        @if (dsNhanVien.Count <= 3)
-        {
             <div class="top"
                  style="display: flex; justify-content: center; gap: 100px">
                 @for (int i = 0; i < dsNhanVien.Count; i++)
@@ -95,35 +56,5 @@
                     </form>
                 }
             </div>
-        }
-        else
-        {
-            <div class="top"
-                 style="display: flex; justify-content: center; gap: 100px">
-                @for (int i = 0; i < 3; i++)
-                {
-                    <form action="~/Employees/Details">
-                        <button type="submit" style="border-color:black;border-radius:4px;width:200px; margin:20px;background-color:rgba(0,0,0,0)" value="@dsNhanVien[i].NHANVIENID" name="id">
-                            <img src="~/Content/images/avatar/@dsNhanVien[i].USER.URLHINHANH" style="width: 180px; margin-top: 4px" height="200px" />
-                            <hr />
-                            <h5 style="display: flex; justify-content: center">@dsNhanVien[i].USER.HOTEN</h5>
-                        </button>
-                    </form>
-                }
-            </div>
-            <div class="bot"
-                 style="display: flex; justify-content: center; gap: 100px">
-                @for (int i = 3; i < dsNhanVien.Count; i++)
-                {
-                    <form action="~/Employees/Details">
-                        <button type="submit" style="border-color:black;border-radius:4px;width:200px; margin:20px;background-color:rgba(0,0,0,0)" value="@dsNhanVien[i].NHANVIENID" name="id">
-                            <img src="~/Content/images/avatar/@dsNhanVien[i].USER.URLHINHANH" style="width: 180px; margin-top: 4px" height="200px" />
-                            <hr />
-                            <h5 style="display: flex; justify-content: center">@dsNhanVien[i].USER.HOTEN</h5>
-                        </button>
-                    </form>
-                }
-            </div>
-        }
     </div>
 </div>

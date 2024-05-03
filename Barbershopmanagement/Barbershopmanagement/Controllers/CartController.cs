@@ -17,6 +17,8 @@ namespace BarbershopManagement.Controllers
         {
             var user = (USER)Session["user"];
             var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
+            List<CHITIETGIOHANG> chiTietGioHang = new List<CHITIETGIOHANG>();
+
             if (gioHang == null)
             {
                 GIOHANG newGioHang = new GIOHANG();
@@ -28,10 +30,9 @@ namespace BarbershopManagement.Controllers
                 }
                 catch (Exception e) { }
             }
-            List<CHITIETGIOHANG> chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
+            chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
             return View(chiTietGioHang);
         }
-
         [HttpPost]
         public ActionResult RemoveItem(int id)
         {

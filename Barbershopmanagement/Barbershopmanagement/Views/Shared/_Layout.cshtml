@@ -103,14 +103,19 @@
                     <a href="~/Cart/Cart" class="navbar__shoppingCart getstarted scrollto active">
                         <img src="~/Content/images/shopping-cart.svg" style="width: 24px;" alt="">
                         @{
-                            Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
-                            var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
-                            List<Barbershopmanagement.Models.CHITIETGIOHANG> chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
-                            if (chiTietGioHang != null)
+                            try
                             {
-                                <span>@chiTietGioHang.Count()</span>
+                                Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+                                var gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
+                                List<Barbershopmanagement.Models.CHITIETGIOHANG> chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
+                                if (chiTietGioHang != null)
+                                {
+                                    <span>@chiTietGioHang.Count()</span>
+                                    }
+
+                                } catch (Exception ex) { }
+
                             }
-                        }
                     </a>
                 }
                 else

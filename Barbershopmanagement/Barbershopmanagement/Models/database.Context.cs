@@ -181,5 +181,15 @@ namespace Barbershopmanagement.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spDonHangTheoThang_Result>("spDonHangTheoThang", thangParameter, namParameter);
         }
+    
+        public virtual ObjectResult<getTopServicesInMonth_Result> getTopServicesInMonth()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getTopServicesInMonth_Result>("getTopServicesInMonth");
+        }
+    
+        public virtual ObjectResult<getTopStaffInMonth_Result> getTopStaffInMonth()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getTopStaffInMonth_Result>("getTopStaffInMonth");
+        }
     }
 }

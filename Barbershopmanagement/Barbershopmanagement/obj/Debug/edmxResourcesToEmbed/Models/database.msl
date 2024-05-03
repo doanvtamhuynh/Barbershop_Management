@@ -181,5 +181,21 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getTopServicesInMonth" FunctionName="BarbershopManagementModel.Store.getTopServicesInMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BarbershopManagementModel.getTopServicesInMonth_Result">
+          <ScalarProperty Name="DICHVUID" ColumnName="DICHVUID" />
+          <ScalarProperty Name="UsageCount" ColumnName="UsageCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getTopStaffInMonth" FunctionName="BarbershopManagementModel.Store.getTopStaffInMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BarbershopManagementModel.getTopStaffInMonth_Result">
+          <ScalarProperty Name="NHANVIENID" ColumnName="NHANVIENID" />
+          <ScalarProperty Name="UsageCount" ColumnName="UsageCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

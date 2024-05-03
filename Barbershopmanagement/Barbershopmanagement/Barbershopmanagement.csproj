@@ -189,6 +189,12 @@
     <Compile Include="Models\getDonHangTheoNgay_Result.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\getTopServicesInMonth_Result.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getTopStaffInMonth_Result.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GIOHANG.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>

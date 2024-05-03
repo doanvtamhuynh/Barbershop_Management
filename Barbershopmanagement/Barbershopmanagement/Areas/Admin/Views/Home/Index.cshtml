@@ -3,8 +3,37 @@
     ViewBag.Title = "Home";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Active = 0;
+    List<Barbershopmanagement.Models.getTopServicesInMonth_Result> topServices = new List<Barbershopmanagement.Models.getTopServicesInMonth_Result>();
+    List<Barbershopmanagement.Models.getTopStaffInMonth_Result> topStaff = new List<Barbershopmanagement.Models.getTopStaffInMonth_Result>();
+    var dsDichVu = new List<Barbershopmanagement.Models.DICHVU>();
+    var dsNhanVien = new List<Barbershopmanagement.Models.NHANVIEN>();
+    try
+    {
+        Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
+        topServices = db.getTopServicesInMonth().ToList();
+        topStaff = db.getTopStaffInMonth().ToList();
+        foreach(var item in topServices)
+        {
+            dsDichVu.Add(db.DICHVUs.Find(item.DICHVUID));
+        }
+        foreach (var item in topStaff)
+        {
+            dsNhanVien.Add(db.NHANVIENs.Find(item.NHANVIENID));
+        }
+    }
+    catch(Exception e) { }
 }
 
+<style>
+    .item-services {
+        display: inline-flex;
+        margin-left: 85px;
+        margin-top: 30px;
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+        width: 300px;
+    }
+</style>
 <div class="col-lg-12 padding-10">
     <section class="content">
         <div class="row">
@@ -84,83 +113,55 @@
 
         </div>
     </section>
+    <hr />
 
-    <p>
-        <a href="~/Admin/QLDichVu/ThemDichVu" class="btn btn-primary">Thêm dịch vụ</a>
-    </p>
+    <span style="font-weight:bold; font-size:30px">Top 3 dịch vụ sử dụng nhiều nhất trong tháng</span>
+    <hr style="border:none"/>
+    @foreach (var item in dsDichVu)
+    {
+        <div class="col-lg-3 col-12 mb-3 item-services" style=" padding-left: 0px; padding-right: 0px; ">
+            <form action="~/Admin/QLDichVu/Edit" method="get">
+                <button type="submit" name="id" value="@item.DICHVUID" class="product-thumb" style="border: none;padding:0">
+                    <img src="~/Content/images/serviceimg/@item.URLHINHANH" class="img-fluid product-image" style="width: 100%; margin:0">
 
-    <form action="~/Admin/Home">
-        <b class="pr-2">Tìm kiếm theo tên</b>
-
-        <div class="d-flex align-items-center">
-            <input id="search" name="search" type="text" class="form-control mr-1">
-            <button type="submit" class="btn btn-danger">
-                Search
-            </button>
-        </div>
-    </form>
-
-    <div class="body fix-width scroll-inner" style="width: 100%; margin-top:4px">
-        <table class="table">
-            <tr>
-                <th>
-                    TÊN DỊCH VỤ
-                </th>
-                <th>
-                    GIÁ DỊCH VỤ
-                </th>
-                <th>
-                    THỜI GIAN THỰC HIỆN
-                </th>
-                <th>
-                    MÔ TẢ
-                </th>
-                <th>
-                    HÌNH ẢNH
-                </th>
-                <th>
-                    <div class="qldichvu_create">
-                        <a href="~/Admin/QLDichVu/ThemDichVu" style="color:white;font-weight:bold;text-decoration:none">Thêm dịch vụ</a>
+                    <div class="product-info">
+                        <div>
+                            <h5 class="product-title">
+                                @item.TENDICHVU
+                            </h5>
+                        </div>
+                        <div>
+                            @string.Format("{0:N0}", item.GIADICHVU)
+                            <span class="currencySymbol">₫</span>
+                        </div>
                     </div>
-                </th>
-            </tr>
+                </button>
+            </form>
+        </div>
+    }
+    <hr />
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TENDICHVU)
-                    </td>
-                    <td>
-                        @string.Format("{0:N0}", item.GIADICHVU)
-                        <span class="currencySymbol">₫</span>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.THOIGIANTHUCHIEN) phút
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MOTA)
-                    </td>
-                    <td>
-                        <img src="~/Content/images/serviceimg/@item.URLHINHANH" style="height:50px" />
-                    </td>
-                    <td style="display:inline-flex">
-                        <form action="~/Admin/QLDichVu/Edit" method="get">
-                            <button type="submit" value="@item.DICHVUID" name="id" class="qldichvu_create" style="width: 100px; background-color: gray; color: white; font-weight: bold; border-color: gray; border-radius: 8px;">
-                                Chỉnh sửa
-                            </button>
-                        </form>
-                        <form action="~/Admin/QLDichVu/Xoa" method="get">
-                            <button type="submit" value="@item.DICHVUID" name="id" class="qldichvu_create" style="width:50px;background-color:red;color:white;font-weight:bold;border-color:red;border-radius:8px;margin-left:5px">
-                                Xóa
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            }
+    <span style="font-weight:bold; font-size:30px">Top 3 nhân viên được đặt lịch nhiều nhất trong tháng</span>
+    <hr style="border:none"/>
 
-        </table>
+    @foreach (var item in dsNhanVien)
+    {
+        <div class="col-lg-3 col-12 mb-3 item-services" style=" padding-left: 0px; padding-right: 0px; ">
+            <form action="~/Admin/QLTaiKhoan/Edit" method="get">
+                <button type="submit" name="id" value="@item.USER.USERID" class="product-thumb" style="border: none;padding:0">
+                    <img src="~/Content/images/avatar/@item.USER.URLHINHANH" class="img-fluid product-image" style="width: 100%; margin:0">
 
-    </div>
+                    <div class="product-info">
+                        <div>
+                            <h5 class="product-title">
+                                @item.USER.HOTEN
+                            </h5>
+                        </div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    }
+
 </div>
 
