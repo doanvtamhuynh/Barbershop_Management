@@ -2323,6 +2323,10 @@
     <Content Include="Content\fontawesome-free-6.5.1-web\svgs\solid\yin-yang.svg" />
     <Content Include="Content\fontawesome-free-6.5.1-web\svgs\solid\z.svg" />
     <Content Include="Content\images\avatar\default-avatar.jpg" />
+    <Content Include="Content\images\bn2.jpg" />
+    <Content Include="Content\images\bn6.jpg" />
+    <Content Include="Content\images\bn7.jpg" />
+    <Content Include="Content\images\cam.png" />
     <Content Include="Content\images\empty_cart.png" />
     <Content Include="Content\images\footerlogo.jpg" />
     <Content Include="Content\images\logo.jpg" />

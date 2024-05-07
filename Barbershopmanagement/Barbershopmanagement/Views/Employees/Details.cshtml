@@ -83,20 +83,20 @@
     <div style="margin-left:40px;font-weight:bold;font-size:20px">
         Bình luận:
     </div>
+    @if (TempData["comment_employee"] != null)
+    {
+        <div style="margin-left:40%;color:red">
+            @TempData["comment_employee"]
+        </div>
+    }
     @if (dsComment.Count() == 0)
     {
-        if (TempData["comment_employee"] != null)
-        {
-            <div style="margin-left:40%;color:red">
-                @TempData["comment_employee"]
-            </div>
-        }
-        else
-        {
-            <div style="margin-left:40%;color:gray">
-                Chưa có bình luận...
-            </div>
-        }
+
+
+        <div style="margin-left:40%;color:gray">
+            Chưa có bình luận...
+        </div>
+
     }
     else
     {

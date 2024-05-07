@@ -30,7 +30,11 @@ namespace BarbershopManagement.Controllers
                 }
                 catch (Exception e) { }
             }
-            chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
+            try
+            {
+                chiTietGioHang = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID).ToList();
+            }
+            catch (Exception e) { }
             return View(chiTietGioHang);
         }
         [HttpPost]

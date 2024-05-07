@@ -62,6 +62,7 @@ namespace BarbershopManagement.Controllers
                     newUser.EMAIL = email;
                     newUser.DIACHI = diachi;
                     newUser.ROLE = "khachhang";
+                    newUser.URLHINHANH = "default-avatar.jpg";
                     db.USERS.Add(newUser);
                     try
                     {

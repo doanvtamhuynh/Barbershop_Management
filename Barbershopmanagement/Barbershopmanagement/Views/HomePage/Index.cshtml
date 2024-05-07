@@ -4,13 +4,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Barbershopmanagement.Models.DICHVU> dsDichVu = new List<Barbershopmanagement.Models.DICHVU>();
     List<Barbershopmanagement.Models.NHANVIEN> dsNhanVien = new List<Barbershopmanagement.Models.NHANVIEN>();
-    try {
+    try
+    {
         Barbershopmanagement.Models.BarbershopManagementEntities db = new Barbershopmanagement.Models.BarbershopManagementEntities();
         dsDichVu = db.DICHVUs.Take(3).ToList();
         dsNhanVien = db.NHANVIENs.Take(3).ToList();
-    }catch(Exception e){}
+    }
+    catch (Exception e) { }
 
 }
+
+<style>
+    .banner-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .banner {
+        display: flex;
+        transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+        }
+    .item-services {
+        display: inline-flex;
+        margin-left: 85px;
+        margin-top: 30px;
+        box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+        border-radius: 10px;
+        width: 300px;
+    }
+</style>
+
+<div class="banner-container">
+    <div class="banner">
+        <img src="~/Content/images/bn7.jpg" alt="Image 1">
+        <img src="~/Content/images/bn2.jpg" alt="Image 2">
+        <img src="~/Content/images/bn6.jpg" alt="Image 3">
+    </div>
+</div>
+
+<script>
+    const banner = document.querySelector('.banner');
+    let scrollAmount = 0;
+    const scrollDistance = 1; // Khoảng cách cuộn mỗi lần
+
+    function autoScroll() {
+        scrollAmount += scrollDistance;
+        banner.style.transform = `translateX(-${scrollAmount}px)`;
+
+        // Nếu cuộn đến hết chiều rộng của hình ảnh cuối cùng
+        if (scrollAmount >= banner.scrollWidth - banner.clientWidth) {
+            scrollAmount = 0; // Quay lại vị trí ban đầu
+            banner.style.transform = `translateX(0)`;
+        }
+    }
+
+    setInterval(autoScroll, 15); // Tự động cuộn mỗi 30 mili giây
+</script>
 
 <div class="container"
      style="
@@ -20,41 +74,93 @@
         display: flex;
         flex-direction: column;
       ">
+
+    <hr />
     <h2 style="display: flex; justify-content: center">DỊCH VỤ</h2>
     <div>
-            <div class="top"
-                 style="display: flex; justify-content: center; gap: 40px">
-                @for (int i = 0; i < dsDichVu.Count; i++)
-                {
-                    <form action="~/Services/Details">
-                        <button type="submit" style="border-color:black;border-radius:4px;width:200px; margin:20px;background-color:rgba(0,0,0,0)" value="@dsDichVu[i].DICHVUID" name="id">
-                            <img src="~/Content/images/serviceimg/@dsDichVu[i].URLHINHANH" style="width: 180px" height="200px" />
-                            <hr />
-                            <h4 style="width:200px">@dsDichVu[i].TENDICHVU</h4>
-                            <div style="width: 200px; overflow-wrap: break-word;padding:4px">
-                                @dsDichVu[i].MOTA chỉ với @string.Format("{0:N0}", dsDichVu[i].GIADICHVU) VND
-                            </div>
-                        </button>
+        <div class="top"
+             style="display: flex; justify-content: center; gap: 40px">
+            @for (int i = 0; i < dsDichVu.Count; i++)
+            {
+                <div class="col-lg-3 col-12 mb-3 item-services">
+                    <form action="~/Services/Details" method="get">
+                        <div class="product-thumb">
+                            <button type="submit" name="id" value="@dsDichVu[i].DICHVUID" style="border: none;">
+                                <img src="~/Content/images/serviceimg/@dsDichVu[i].URLHINHANH" class="img-fluid product-image" style="width: 300px;height:300px">
+                            </button>
+
+                            <button class="product-info" style="width: 300px; text-align:center; border:none; width:300px" name="id" value="@dsDichVu[i].DICHVUID">
+                                <div>
+                                    <h5 class="product-title">
+                                        @dsDichVu[i].TENDICHVU
+                                    </h5>
+                                </div>
+                                <div>
+                                    @string.Format("{0:N0}", dsDichVu[i].GIADICHVU)
+                                    <span class="currencySymbol">₫</span>
+                                </div>
+                            </button>
+                        </div>
                     </form>
-                    
-                }
-            </div>
+                </div>
+            }
+        </div>
     </div>
     <hr />
     <h2 style="display: flex; justify-content: center;  ">NHÂN VIÊN</h2>
     <div>
-            <div class="top"
-                 style="display: flex; justify-content: center; gap: 100px">
-                @for (int i = 0; i < dsNhanVien.Count; i++)
-                {
-                    <form action="~/Employees/Details">
-                        <button type="submit" style="border-color:black;border-radius:4px;width:200px; margin:20px;background-color:rgba(0,0,0,0)" value="@dsNhanVien[i].NHANVIENID" name="id">
-                            <img src="~/Content/images/avatar/@dsNhanVien[i].USER.URLHINHANH" style="width: 180px; margin-top: 4px" height="200px" />
-                            <hr />
-                            <h5 style="display: flex; justify-content: center">@dsNhanVien[i].USER.HOTEN</h5>
-                        </button>
+        <div class="top"
+             style="display: flex; justify-content: center; gap: 100px">
+            @for (int i = 0; i < dsNhanVien.Count; i++)
+            {
+                <div class="col-lg-3 col-12 mb-3 item-services">
+                    <form action="~/Employees/Details" method="get">
+                        <div class="product-thumb">
+                            <button type="submit" name="id" value="@dsNhanVien[i].NHANVIENID" style="border: none;">
+                                <img src="~/Content/images/avatar/@dsNhanVien[i].USER.URLHINHANH" class="img-fluid product-image" style="width: 300px;height:300px">
+                            </button>
+
+                            <button class="product-info" style="width: 300px; text-align:center; border:none; width:300px" name="id" value="@dsNhanVien[i].NHANVIENID">
+                                <div>
+                                    <h5 class="product-title">
+                                        @dsNhanVien[i].USER.HOTEN
+                                    </h5>
+                                </div>
+                                <div>
+                                    @dsNhanVien[i].USER.SODIENTHOAI
+                                </div>
+                            </button>
+                        </div>
                     </form>
-                }
-            </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
+    <div>
+        <h2 style="display: flex; justify-content: center">CAM KẾT</h2>
+        <div style="position: relative;">
+            <img src="~/Content/images/cam.png" style=" width: 100%;">
+            <h4 style="position: absolute; z-index: 1; top: 300px; margin-left: 30%; color: #fff;">
+                VÌ CHẤT LƯỢNG PHỤC VỤ LÀ HÀNG ĐẦU
+            </h4>
+            <p style="position: absolute; z-index: 1; top: 330px; margin-left: 36%; color: #fff;">
+                Áp dụng tại salon bất kỳ toàn hệ
+                thống
+            </p>
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: space-around; margin-top: 20px; ">
+            <section2 style="display: flex; flex-direction: column; text-align: center; gap: 10px;">
+                <p style="font-size: 40px; color:skyblue; ">07</p>
+                <p style="font-size: 20px; color:skyblue;">ngày</p>
+                <p>Bảo hành tóc miễn phí</p>
+            </section2>
+            <section3 style="display: flex; flex-direction: column; text-align: center; gap: 10px;">
+                <p style="font-size: 40px; color:skyblue;">Giảm</p>
+                <p style="font-size: 20px; color:skyblue;">20%</p>
+                <p>Riêng lần đầu uốn nhuộm</p>
+            </section3>
+        </div>
     </div>
 </div>

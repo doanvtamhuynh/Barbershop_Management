@@ -51,7 +51,7 @@
 
     <div class="product__details-img col-lg-4 col-md-4">
         <div class="big-img">
-            <img src="~/Content/images/@Model.URLHINHANH" alt="" id="zoom" style="visibility: visible;">
+            <img src="~/Content/images/serviceimg/@Model.URLHINHANH" alt="" id="zoom" style="visibility: visible;">
         </div>
     </div>
 
@@ -102,20 +102,18 @@
     <div style="margin-left:40px;font-weight:bold;font-size:20px">
         Bình luận:
     </div>
+    @if (TempData["comment_service"] != null)
+    {
+        <div style="margin-left:40%;color:red">
+            @TempData["comment_service"]
+        </div>
+    }
     @if (dsComment.Count() == 0)
     {
-        if (TempData["comment_service"] != null)
-        {
-            <div style="margin-left:40%;color:red">
-                @TempData["comment_service"]
-            </div>
-        }
-        else
-        {
-            <div style="margin-left:40%;color:gray">
-                Chưa có bình luận...
-            </div>
-        }
+
+        <div style="margin-left:40%;color:gray">
+            Chưa có bình luận...
+        </div>
     }
     else
     {
