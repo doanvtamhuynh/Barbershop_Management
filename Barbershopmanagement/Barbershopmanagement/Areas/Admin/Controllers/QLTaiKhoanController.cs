@@ -54,7 +54,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                     newUser.ROLE = role;
                     if (fileImages != null)
                     {
-                        string rootFolder = Server.MapPath("/Content/images/avatar");
+                        string rootFolder = Server.MapPath("/Content/images/avatar/");
                         string pathImg = rootFolder + fileImages.FileName;
                         fileImages.SaveAs(pathImg);
                         newUser.URLHINHANH = fileImages.FileName;
@@ -65,6 +65,12 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                     }
 
                     db.USERS.Add(newUser);
+                    if(newUser.ROLE == "nhanvien")
+                    {
+                        NHANVIEN newNV = new NHANVIEN();
+                        newNV.USERID = newUser.USERID;
+                        db.NHANVIENs.Add(newNV);
+                    }
                     try
                     {
                         db.SaveChanges();
@@ -114,7 +120,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                         updateModel.DIACHI = model.DIACHI;
                         if (fileImages != null && fileImages.ContentLength > 0)
                         {
-                            string rootFolder = Server.MapPath("/Content/Images/avatar");
+                            string rootFolder = Server.MapPath("/Content/Images/avatar/");
                             string pathImg = rootFolder + fileImages.FileName;
                             fileImages.SaveAs(pathImg);
                             updateModel.URLHINHANH = fileImages.FileName;
@@ -169,6 +175,11 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
         public ActionResult Xoa(int id)
         {
             var model = db.USERS.Find(id);
+            if(model.ROLE == "nhanvien")
+            {
+                var nhanVien = db.NHANVIENs.First(m => m.USERID == model.USERID);
+                db.NHANVIENs.Remove(nhanVien);
+            }
             db.USERS.Remove(model);
             try
             {
