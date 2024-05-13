@@ -11,9 +11,10 @@ Dự án này là một ứng dụng web được thiết kế để hỗ trợ 
 - 
 # Bảng Điều Khiển của Quản Trị Viên
 - Quản Lý Cuộc Hẹn: Quản trị viên có thể xem, chỉnh sửa và hủy bỏ các cuộc hẹn được đặt bởi khách hàng.
-- Quản Lý Stylist: Quản trị viên có thể thêm, chỉnh sửa hoặc xóa hồ sơ stylist, bao gồm lịch trình và chuyên môn của họ.
+- Quản Lý Stylist: Quản trị viên có thể thêm, chỉnh sửa hoặc xóa hồ sơ stylist.
 - Quản Lý Khách Hàng: Quản trị viên có thể xem chi tiết khách hàng và lịch sử đặt lịch của họ.
-= Thống Kê: Quản trị viên có quyền truy cập vào thống kê và báo cáo về xu hướng đặt lịch, khung giờ phổ biến, v.v.
+- Quản Lý Dịch Vụ: Quản trị viên có thể thêm, chỉnh sửa hoặc xóa dịch vụ.
+- Thống Kê: Quản trị viên có quyền truy cập vào thống kê doanh thu trong ngày, tháng hoặc năm.
 
 # Công Nghệ Sử Dụng
 - Giao Diện Người Dùng: HTML, CSS, JavaScript (ASP.NET Razor Pages)
