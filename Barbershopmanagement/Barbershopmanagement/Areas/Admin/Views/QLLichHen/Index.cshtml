@@ -148,7 +148,7 @@
                         @string.Format("{0:N0}", total)
                         <span class="currencySymbol">₫</span>
                     </td>
-                    <td>
+                    <td style="width:150px">
                         @if (item.TINHTRANGID == 2)
                         {
                             <span style="color:green">Đơn hàng đã được xác nhận.</span>
@@ -162,19 +162,19 @@
                             <span style="color:green;">Đã hoàn thành</span>
                         }
                     </td>
-                    <td>
+                    <td style="width:100px">
                         @Html.ActionLink("Chi tiết", "Details", new { id = item.DONHANGID }, new { @class = "styled-link" })
 
                     </td>
                     @if (item.TINHTRANGID == 1)
                     {
-                        <td>
+                        <td style="width:150px">
                             @Html.ActionLink("Xác nhận", "Confirm", new { id = item.DONHANGID }, new { @class = "styled-link", style = "background-color: green;" })
                         </td>
                     }
                     @if (item.TINHTRANGID == 1)
                     {
-                        <td>
+                        <td style="width:50px">
                             <button class="styled-link" id="showFormButton @index" style="background-color: red; border:none">Xóa</button>
                             <form action="~/Admin/QLLichHen/Delete" class="modal" id="myForm @index" style="display: none;">
                                 <div class="modal__overlay" id="hideForm @index"></div>
@@ -210,7 +210,7 @@
                     }
                     @if (item.TINHTRANGID == 2)
                     {
-                        <td>
+                        <td style="width:130px">
                             @Html.ActionLink("Hoàn thành", "Done", new { id = item.DONHANGID }, new { @class = "styled-link", style = "background-color: green;" })
                         </td>
                     }

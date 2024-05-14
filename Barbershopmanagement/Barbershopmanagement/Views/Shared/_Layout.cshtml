@@ -89,9 +89,12 @@
                                                 <a class="header__info-item-link" href="~/LichLamViec/"><i class="fa-solid fa-calendar-days"></i> Lịch làm việc</a>
                                             </li>
                                         }
-                                        <li class="header__info-item">
-                                            <a class="header__info-item-link" href="~/OrderHistory/History"><i class="fa-solid fa-list"></i> Xem lịch hẹn</a>
-                                        </li>
+                                        @if (user.ROLE == "khachhang")
+                                        {
+                                            <li class="header__info-item">
+                                                <a class="header__info-item-link" href="~/OrderHistory/History"><i class="fa-solid fa-list"></i> Xem lịch hẹn</a>
+                                            </li>
+                                        }
                                         <li class="header__info-item">
                                             <a class="header__info-item-link" href="~/Security/LogOut"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất </a>
                                         </li>

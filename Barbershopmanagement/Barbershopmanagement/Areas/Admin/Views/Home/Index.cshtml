@@ -57,7 +57,7 @@
                     <div class="inner">
                         <h3>@ViewBag.ThongKeDonHang</h3>
 
-                        <p>Đơn Hàng Mới</p>
+                        <p>Lịch Hẹn Mới</p>
                     </div>
                     <div class="icon">
                         <i class="ion-android-cart"></i>
@@ -77,7 +77,7 @@
                     <div class="inner">
                         <h3>@ViewBag.ThongKeDonHangChuaHT</h3>
 
-                        <p>Đơn Hàng Chưa Hoàn Thành</p>
+                        <p>Lịch Hẹn Chưa Hoàn Thành</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-eye"></i>
@@ -122,7 +122,7 @@
         <div class="col-lg-3 col-12 mb-3 item-services" style=" padding-left: 0px; padding-right: 0px; ">
             <form action="~/Admin/QLDichVu/Edit" method="get">
                 <button type="submit" name="id" value="@item.DICHVUID" class="product-thumb" style="border: none;padding:0">
-                    <img src="~/Content/images/serviceimg/@item.URLHINHANH" class="img-fluid product-image" style="width: 100%; margin:0">
+                    <img src="~/Content/images/serviceimg/@item.URLHINHANH" class="img-fluid product-image" style="width: 300px; height:300px; margin:0">
 
                     <div class="product-info">
                         <div>
@@ -149,10 +149,10 @@
         <div class="col-lg-3 col-12 mb-3 item-services" style=" padding-left: 0px; padding-right: 0px; ">
             <form action="~/Admin/QLTaiKhoan/Edit" method="get">
                 <button type="submit" name="id" value="@item.USER.USERID" class="product-thumb" style="border: none;padding:0">
-                    <img src="~/Content/images/avatar/@item.USER.URLHINHANH" class="img-fluid product-image" style="width: 100%; margin:0">
+                    <img src="~/Content/images/avatar/@item.USER.URLHINHANH" class="img-fluid product-image" style="width: 300px;height:300px; margin:0">
 
                     <div class="product-info">
-                        <div>
+                        <div style="height:50px">
                             <h5 class="product-title">
                                 @item.USER.HOTEN
                             </h5>

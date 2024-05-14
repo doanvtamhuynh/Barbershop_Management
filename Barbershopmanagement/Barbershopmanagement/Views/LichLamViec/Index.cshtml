@@ -62,13 +62,16 @@
     <table class="table">
         <tr>
             <th>
-                Người đặt lịch
+                TÊN KHÁCH HÀNG
             </th>
             <th>
-                Thời gian đặt lịch
+                NGÀY
             </th>
             <th>
-                Tình trang
+                GIỜ
+            </th>
+            <th>
+                TÌNH TRẠNG
             </th>
             <th></th>
         </tr>
@@ -80,7 +83,45 @@
                     @Html.DisplayFor(modelItem => item.USER.HOTEN)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.THOIGIAN)
+                    @item.THOIGIAN.Value.Day - @item.THOIGIAN.Value.Month - @item.THOIGIAN.Value.Year
+                </td>
+                <td>
+                    @{ 
+                        var chiTietDH = db.CHITIETDONHANGs.Where(m => m.DONHANGID == item.DONHANGID).ToList();
+                        var tongThoiGian = 0;
+                        foreach(var i in chiTietDH) {
+                            tongThoiGian += i.DICHVU.THOIGIANTHUCHIEN;
+                        }
+                    }
+                    @item.THOIGIAN.Value.Hour :
+                    @{var minute = ""; }
+                    @if (item.THOIGIAN.Value.Minute.ToString().Length == 1)
+                    {
+                        minute = "0" + item.THOIGIAN.Value.Minute.ToString();
+                    }
+                    else {
+                        minute = item.THOIGIAN.Value.Minute.ToString();
+                    }
+                    @minute
+                     đến 
+                    @{ 
+                        var gioKetThuc = item.THOIGIAN.Value.Hour;
+                        var phutKetThuc = tongThoiGian + item.THOIGIAN.Value.Minute;
+                        while(phutKetThuc >= 60) {
+                            gioKetThuc += 1;
+                            phutKetThuc -= 60;
+                        }
+                        var stphutKetThuc = "";
+                        if (phutKetThuc.ToString().Length == 1)
+                        {
+                            stphutKetThuc = "0" + phutKetThuc.ToString();
+                        }
+                        else
+                        {
+                            stphutKetThuc = phutKetThuc.ToString();
+                        }
+                    }
+                    @gioKetThuc : @stphutKetThuc
                 </td>
                 <td>
                     @if (item.TINHTRANGID == 2)

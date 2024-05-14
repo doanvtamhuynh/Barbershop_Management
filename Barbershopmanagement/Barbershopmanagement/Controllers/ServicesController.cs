@@ -51,9 +51,15 @@ namespace BarbershopManagement.Controllers
                     db.SaveChanges();
                 }
                 catch (Exception e) { }
+                gioHang = db.GIOHANGs.Where(m => m.USERID == user.USERID).FirstOrDefault();
             }
 
-            var hadItem = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID && m.DICHVUID == id).FirstOrDefault();
+            CHITIETGIOHANG hadItem = new CHITIETGIOHANG();
+
+            try
+            {
+                hadItem = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID && m.DICHVUID == id).FirstOrDefault();
+            }catch(Exception e) { }
 
             if (hadItem == null)
             {

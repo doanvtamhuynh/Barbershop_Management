@@ -3,18 +3,6 @@
   "WorkspaceRootPath": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\controllers\\homepagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\controllers\\homepagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\areas\\admin\\controllers\\qltaikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\areas\\admin\\controllers\\qltaikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\views\\homepage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\views\\homepage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -31,53 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Barbershopmanagement\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Barbershopmanagement\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAIkAAAAAAAAAAAAAAJwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-13T12:05:18.79Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "QLTaiKhoanController.cs",
-              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Controllers\\QLTaiKhoanController.cs",
-              "RelativeDocumentMoniker": "Barbershopmanagement\\Areas\\Admin\\Controllers\\QLTaiKhoanController.cs",
-              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Areas\\Admin\\Controllers\\QLTaiKhoanController.cs",
-              "RelativeToolTip": "Barbershopmanagement\\Areas\\Admin\\Controllers\\QLTaiKhoanController.cs",
-              "ViewState": "AQIAAJsAAAAAAAAAAAAswLQAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-13T11:53:45.791Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\HomePage\\Index.cshtml",
               "RelativeDocumentMoniker": "Barbershopmanagement\\Views\\HomePage\\Index.cshtml",
               "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\HomePage\\Index.cshtml",
               "RelativeToolTip": "Barbershopmanagement\\Views\\HomePage\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAzAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAcwCkAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-13T11:53:08.491Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomePageController.cs",
-              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Controllers\\HomePageController.cs",
-              "RelativeDocumentMoniker": "Barbershopmanagement\\Controllers\\HomePageController.cs",
-              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Controllers\\HomePageController.cs",
-              "RelativeToolTip": "Barbershopmanagement\\Controllers\\HomePageController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T05:06:00.137Z",
+              "WhenOpened": "2024-05-14T13:31:26.466Z",
               "EditorCaption": ""
             }
           ]
