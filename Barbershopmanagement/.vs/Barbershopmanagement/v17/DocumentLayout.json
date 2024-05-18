@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\views\\homepage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\views\\homepage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\controllers\\lichlamvieccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\controllers\\lichlamvieccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\views\\lichlamviec\\timkiemtheongay.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\views\\lichlamviec\\timkiemtheongay.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\views\\lichlamviec\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\views\\lichlamviec\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\views\\lichlamviec\\timkiemtheonam.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\views\\lichlamviec\\timkiemtheonam.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|d:\\kltn-nhom3\\project\\barbershopmanagement\\barbershopmanagement\\views\\lichlamviec\\timkiemtheothang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6D0FBDA-37E7-49AD-9EE8-4A44170AE603}|Barbershopmanagement\\Barbershopmanagement.csproj|solutionrelative:barbershopmanagement\\views\\lichlamviec\\timkiemtheothang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\HomePage\\Index.cshtml",
-              "RelativeDocumentMoniker": "Barbershopmanagement\\Views\\HomePage\\Index.cshtml",
-              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\HomePage\\Index.cshtml",
-              "RelativeToolTip": "Barbershopmanagement\\Views\\HomePage\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAcwCkAAAA1AAAA",
+              "DocumentIndex": 4,
+              "Title": "TimKiemTheoThang.cshtml",
+              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoThang.cshtml",
+              "RelativeDocumentMoniker": "Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoThang.cshtml",
+              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoThang.cshtml",
+              "RelativeToolTip": "Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoThang.cshtml",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-14T13:31:26.466Z",
+              "WhenOpened": "2024-05-18T13:36:51.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TimKiemTheoNgay.cshtml",
+              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoNgay.cshtml",
+              "RelativeDocumentMoniker": "Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoNgay.cshtml",
+              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoNgay.cshtml",
+              "RelativeToolTip": "Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoNgay.cshtml",
+              "ViewState": "AQIAAJkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T13:36:50.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TimKiemTheoNam.cshtml",
+              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoNam.cshtml",
+              "RelativeDocumentMoniker": "Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoNam.cshtml",
+              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoNam.cshtml",
+              "RelativeToolTip": "Barbershopmanagement\\Views\\LichLamViec\\TimKiemTheoNam.cshtml",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAAAHQAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T13:35:52.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\Index.cshtml",
+              "RelativeDocumentMoniker": "Barbershopmanagement\\Views\\LichLamViec\\Index.cshtml",
+              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Views\\LichLamViec\\Index.cshtml",
+              "RelativeToolTip": "Barbershopmanagement\\Views\\LichLamViec\\Index.cshtml",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T13:36:01.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LichLamViecController.cs",
+              "DocumentMoniker": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Controllers\\LichLamViecController.cs",
+              "RelativeDocumentMoniker": "Barbershopmanagement\\Controllers\\LichLamViecController.cs",
+              "ToolTip": "D:\\KLTN-Nhom3\\Project\\Barbershopmanagement\\Barbershopmanagement\\Controllers\\LichLamViecController.cs",
+              "RelativeToolTip": "Barbershopmanagement\\Controllers\\LichLamViecController.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAYwDYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T13:34:50.533Z",
               "EditorCaption": ""
             }
           ]

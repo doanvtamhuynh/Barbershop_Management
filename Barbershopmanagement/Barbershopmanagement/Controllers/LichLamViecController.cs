@@ -52,7 +52,6 @@ namespace Barbershopmanagement.Controllers
             USER user = (USER)Session["user"];
             var datetime = DateTime.Now;
             List<DONHANG> dsDH = db.DONHANGs.Where(m => m.NHANVIEN.USERID == user.USERID && m.TINHTRANGID != 1
-                                                        && m.THOIGIAN.Value.Day >= datetime.Day
                                                         && m.THOIGIAN.Value.Month == month.Month
                                                         && m.THOIGIAN.Value.Year == month.Year
                                                         ).OrderBy(m => m.THOIGIAN).ToList();
@@ -65,8 +64,6 @@ namespace Barbershopmanagement.Controllers
             USER user = (USER)Session["user"];
             var datetime = DateTime.Now;
             List<DONHANG> dsDH = db.DONHANGs.Where(m => m.NHANVIEN.USERID == user.USERID && m.TINHTRANGID != 1
-                                                        && m.THOIGIAN.Value.Day >= datetime.Day
-                                                        && m.THOIGIAN.Value.Month >= datetime.Month
                                                         && m.THOIGIAN.Value.Year == year
                                                         ).OrderBy(m => m.THOIGIAN).ToList();
             ViewBag.selectDay = year;
