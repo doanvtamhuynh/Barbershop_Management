@@ -53,6 +53,7 @@ namespace BarbershopManagement.Controllers
                         try
                         {
                             db.SaveChanges();
+                            Session["user"] = updateModel;
                         }
                         catch (Exception e) { }
                         return RedirectToAction("Profile");
@@ -82,6 +83,7 @@ namespace BarbershopManagement.Controllers
                     try
                     {
                         db.SaveChanges();
+                        Session["user"] = updateModel;
                     }
                     catch (Exception e) { }
                     return RedirectToAction("Profile");

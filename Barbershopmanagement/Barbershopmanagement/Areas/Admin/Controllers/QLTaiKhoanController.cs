@@ -120,7 +120,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                         updateModel.DIACHI = model.DIACHI;
                         if (fileImages != null && fileImages.ContentLength > 0)
                         {
-                            string rootFolder = Server.MapPath("/Content/Images/avatar/");
+                            string rootFolder = Server.MapPath("/Content/images/avatar/");
                             string pathImg = rootFolder + fileImages.FileName;
                             fileImages.SaveAs(pathImg);
                             updateModel.URLHINHANH = fileImages.FileName;
@@ -150,7 +150,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                     updateModel.DIACHI = model.DIACHI;
                     if (fileImages != null && fileImages.ContentLength > 0)
                     {
-                        string rootFolder = Server.MapPath("/Content/Images/avatar");
+                        string rootFolder = Server.MapPath("/Content/images/avatar/");
                         string pathImg = rootFolder + fileImages.FileName;
                         fileImages.SaveAs(pathImg);
                         updateModel.URLHINHANH = fileImages.FileName;
