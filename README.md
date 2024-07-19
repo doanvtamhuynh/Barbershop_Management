@@ -21,3 +21,8 @@ Dự án này là một ứng dụng web được thiết kế để hỗ trợ 
 - Backend: ASP.NET MVC
 - Cơ Sở Dữ Liệu: Entity Framework (với SQL Server)
 - Cập Nhật Thời Gian Thực: SignalR
+- 
+## Hướng Dẫn Cài Đặt
+Clone repository về máy tính của bạn.
+   ```bash
+   https://github.com/doanvtamhuynh/Barbershop_Management.git
