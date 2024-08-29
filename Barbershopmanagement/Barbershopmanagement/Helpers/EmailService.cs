@@ -11,8 +11,8 @@ namespace BarbershopManagement.Helpers
     {
         private readonly string _smtpServer = "smtp.gmail.com";
         private readonly int _smtpPort = 587;
-        private readonly string _smtpUsername = "bindoan2132@gmail.com";
-        private readonly string _smtpPassword = "dsls copw pbwa dugc";
+        private readonly string _smtpUsername = "your email";
+        private readonly string _smtpPassword = "your password smtp";
 
         public void SendEmail(string to, string subject, string body)
         {
