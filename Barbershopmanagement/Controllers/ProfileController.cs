@@ -1,7 +1,6 @@
 ﻿using Barbershopmanagement.App_Start;
 using Barbershopmanagement.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,8 +13,8 @@ namespace BarbershopManagement.Controllers
         BarbershopManagementEntities db = new BarbershopManagementEntities();
         public ActionResult Profile()
         {
-                USER model = (USER)Session["user"];
-                return View(model);
+            USER model = (USER)Session["user"];
+            return View(model);
         }
 
         public ActionResult EditProfile()

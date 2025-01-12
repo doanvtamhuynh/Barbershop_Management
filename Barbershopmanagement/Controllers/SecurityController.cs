@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.SessionState;
+﻿using Barbershopmanagement.Models;
 using BarbershopManagement.Helpers;
-using Barbershopmanagement.Models;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace BarbershopManagement.Controllers
 {

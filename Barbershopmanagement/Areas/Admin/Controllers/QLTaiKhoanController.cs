@@ -65,7 +65,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
                     }
 
                     db.USERS.Add(newUser);
-                    if(newUser.ROLE == "nhanvien")
+                    if (newUser.ROLE == "nhanvien")
                     {
                         NHANVIEN newNV = new NHANVIEN();
                         newNV.USERID = newUser.USERID;
@@ -175,7 +175,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
         public ActionResult Xoa(int id)
         {
             var model = db.USERS.Find(id);
-            if(model.ROLE == "nhanvien")
+            if (model.ROLE == "nhanvien")
             {
                 var nhanVien = db.NHANVIENs.First(m => m.USERID == model.USERID);
                 db.NHANVIENs.Remove(nhanVien);
@@ -190,6 +190,6 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-       
+
     }
 }

@@ -1,10 +1,8 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Barbershopmanagement.App_Start;
 
 namespace Barbershopmanagement.Areas.Admin.Controllers
 {
@@ -24,7 +22,7 @@ namespace Barbershopmanagement.Areas.Admin.Controllers
             foreach (var item in dsDonHang)
             {
                 var chiTietDH = db.CHITIETDONHANGs.Where(m => m.DONHANGID == item.DONHANGID).ToList();
-                foreach(var i in chiTietDH)
+                foreach (var i in chiTietDH)
                 {
                     doanhThu += i.DICHVU.GIADICHVU;
                 }

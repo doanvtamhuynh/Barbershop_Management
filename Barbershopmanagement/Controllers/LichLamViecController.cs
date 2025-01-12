@@ -3,7 +3,6 @@ using Barbershopmanagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Barbershopmanagement.Controllers
@@ -29,13 +28,13 @@ namespace Barbershopmanagement.Controllers
             return View(dsDH);
         }
 
-        public ActionResult Details(int id) 
+        public ActionResult Details(int id)
         {
             var model = db.CHITIETDONHANGs.Where(m => m.DONHANGID == id);
             return View(model);
         }
 
-        public ActionResult TimKiemTheoNgay(DateTime datetime) 
+        public ActionResult TimKiemTheoNgay(DateTime datetime)
         {
             USER user = (USER)Session["user"];
             List<DONHANG> dsDH = db.DONHANGs.Where(m => m.NHANVIEN.USERID == user.USERID && m.TINHTRANGID != 1
@@ -46,8 +45,8 @@ namespace Barbershopmanagement.Controllers
             ViewBag.selectDay = datetime;
             return View(dsDH);
         }
-        
-        public ActionResult TimKiemTheoThang(DateTime month) 
+
+        public ActionResult TimKiemTheoThang(DateTime month)
         {
             USER user = (USER)Session["user"];
             var datetime = DateTime.Now;
@@ -59,7 +58,7 @@ namespace Barbershopmanagement.Controllers
             return View(dsDH);
         }
 
-        public ActionResult TimKiemTheoNam(int year) 
+        public ActionResult TimKiemTheoNam(int year)
         {
             USER user = (USER)Session["user"];
             var datetime = DateTime.Now;

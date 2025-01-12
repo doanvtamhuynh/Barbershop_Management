@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Timers;
-using System.Web;
-
-namespace BarbershopManagement.Helpers
+﻿namespace BarbershopManagement.Helpers
 {
     public class Helpers
     {

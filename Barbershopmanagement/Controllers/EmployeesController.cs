@@ -1,10 +1,9 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Barbershopmanagement.App_Start;
 
 namespace BarbershopManagement.Controllers
 {

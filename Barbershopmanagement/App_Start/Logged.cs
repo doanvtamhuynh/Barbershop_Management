@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Barbershopmanagement.Models;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
-using Barbershopmanagement.Models;
 
 namespace Barbershopmanagement.App_Start
 {

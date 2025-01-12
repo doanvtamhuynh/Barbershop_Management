@@ -1,10 +1,9 @@
-﻿using Barbershopmanagement.Models;
+﻿using Barbershopmanagement.App_Start;
+using Barbershopmanagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Barbershopmanagement.App_Start;
 
 namespace BarbershopManagement.Controllers
 {
@@ -59,7 +58,8 @@ namespace BarbershopManagement.Controllers
             try
             {
                 hadItem = db.CHITIETGIOHANGs.Where(m => m.GIOHANGID == gioHang.GIOHANGID && m.DICHVUID == id).FirstOrDefault();
-            }catch(Exception e) { }
+            }
+            catch (Exception e) { }
 
             if (hadItem == null)
             {
